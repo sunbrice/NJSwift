@@ -90,7 +90,126 @@ func online(age : Int) {
 
 ```
 
+## `switch`
 
+- 1> switch可以不跟()
+- 2> case语句结束后可以不跟break,默认系统会加
+- 3> 如果希望一个case中出现case穿透,那么可以在case语句结束后跟上fallthrough
+- 4> case后面可以跟多个条件,多个条件以,分割
+
+```swift
+
+switch sex {
+    case 0, 1:
+        print("正常人")
+    default:
+        print("其他")
+}
+```
+
+- 5> switch可以判断浮点型
+
+```swift
+let a : Double = 3.14
+switch a {
+case 3.14:
+    print("π")
+default:
+    print("非π")
+}
+```
+
+- 6> switch可以判断字符串
+
+```swift
+let m = 20
+let n = 30
+let opration = "+"
+
+var result = 0
+
+switch opration {
+case "+":
+    result = m + n
+case "-":
+    result = m - n
+case "*":
+    result = m * n
+case "/":
+    result = m / n
+default:
+    print("非法操作符")
+}
+```
+
+- 7> switch可以判断区间
+
+```swift
+
+let score = 93
+
+switch score {
+case 0..<60:
+    print("不及格")
+case 60..<80:
+    print("及格")
+case 80..<90:
+    print("良好")
+case 90...100:
+    print("不错噢")
+default:
+    print("不合理的分数")
+}
+
+```
+
+## for 循环
+- 区间的遍历`forin写法:区间遍历0..<10`
+- 如果不需要用到下标值,可以使用_来代替`for _ in 0..<10`
+
+```swift
+// ()可以省略
+for var i = 0; i < 10; i++ {
+    print(i)
+}
+
+// 2.forin写法:区间遍历
+for i in 0..<10 {
+    print(i)
+}
+
+// 3.forin写法:但是不需要用到下标值
+// 如果不需要用到下标值,可以使用_来代替
+for _ in 0..<10 {
+    print("hello world")
+}
+
+```
+
+## while循环
+
+- 1> while后面的()可以省略
+- 2>没有非0(nil)即真
+
+```swift
+// 1.while循环
+// 1> while后面的()可以省略 2>没有非0(nil)即真
+var a = 10
+
+while a > 0 {
+    a--
+    print(a)
+}
+
+
+// 2.do while循环
+// 1> 类型while循环的差别 2>do需要换成repeat
+repeat {
+    a++
+    print(a)
+} while a < 10
+
+```
 
 
 
