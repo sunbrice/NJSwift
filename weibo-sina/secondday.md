@@ -79,6 +79,11 @@ let regex1 = try! NSRegularExpression(pattern: pattern, options: .CaseInsensitiv
 ```
 
 
+### swift中的SEL
+###访客视图中的icon的缩放问题
+###animation
+###initWithFame的注意点
+###modal的背后控制
 
 
 
