@@ -64,6 +64,7 @@ for (key, value) in dictM {
 - 4 合并字典
     - 注意:字典即使类型一直也不可以先加合并
     - 是遍历出另一个字典的所有键值对添加到新的字典中
+
 ```swift
 let tempDict : [String : AnyObject] = ["phoneNum" : "+86 110", "sex" : "男"]
 

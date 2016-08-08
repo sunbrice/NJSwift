@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Monitor-Property | NJSwift</title>
+        <title>SecondDay | NJSwift</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,8 @@
     
     
     
-    <link rel="next" href="../01-swiftfoundation/closure.html" />
     
-    
-    <link rel="prev" href="../01-swiftfoundation/init.html" />
+    <link rel="prev" href="../weibo-sina/README.html" />
     
 
         
@@ -33,7 +31,7 @@
 
 
         
-    <div class="book"  data-level="1.7.3" data-basepath=".." data-revision="1470658308479">
+    <div class="book"  data-level="2.1" data-basepath=".." data-revision="1470658308479">
     
 
 <div class="book-summary">
@@ -249,7 +247,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="1.7.3" data-path="01-swiftfoundation/monitor-property.html">
+        <li class="chapter " data-level="1.7.3" data-path="01-swiftfoundation/monitor-property.html">
             
                 
                     <a href="../01-swiftfoundation/monitor-property.html">
@@ -340,7 +338,7 @@
                 
     
         
-        <li class="chapter " data-level="2.1" data-path="weibo-sina/secondday.html">
+        <li class="chapter active" data-level="2.1" data-path="weibo-sina/secondday.html">
             
                 
                     <a href="../weibo-sina/secondday.html">
@@ -449,50 +447,79 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_433">
+                    <section class="normal" id="section-gitbook_440">
                     
-                        <h1 id="monitor-property">Monitor-Property</h1>
+                        <h1 id="secondday">SecondDay</h1>
+<h3 id="-">一, 异常处理</h3>
 <ul>
-<li>属性监听器, <code>newValue/oldValue</code><ul>
-<li><code>willSet</code></li>
-<li><code>didSet</code></li>
-</ul>
+<li>如果在调用系统某一个方法时,该方法最后有一个throws.说明该方法会抛出异常.</li>
+<li>如果一个方法会抛出异常,那么需要对该异常进行处理</li>
+<li><p>在swift中提供三种处理异常的方式</p>
+</li>
+<li><p>方式一:try方式 程序员手动捕捉异常</p>
 </li>
 </ul>
-<pre><code class="lang-swift">
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>: <span class="hljs-title">NSObject</span> </span>{
-    <span class="hljs-comment">// 属性监听器</span>
-        <span class="hljs-comment">// 可以给newValue自定义名称</span>
-        <span class="hljs-keyword">willSet</span> (<span class="hljs-keyword">new</span>){ <span class="hljs-comment">// 属性即将改变,还未改变时会调用的方法</span>
-            <span class="hljs-comment">// 在该方法中有一个默认的系统属性newValue,用于存储新值</span>
-            <span class="hljs-built_in">print</span>(name)
-            <span class="hljs-built_in">print</span>(<span class="hljs-keyword">new</span>)
+<pre><code class="lang-swift">        <span class="hljs-keyword">do</span> {
+          <span class="hljs-keyword">let</span> regex = try <span class="hljs-type">NSRegularExpression</span>(pattern: pattern, options: .<span class="hljs-type">CaseInsensitive</span>)
+        } catch {
+            <span class="hljs-built_in">print</span>(error)
         }
-        <span class="hljs-comment">// 可以给oldValue自定义名称</span>
-        <span class="hljs-keyword">didSet</span> (old) { <span class="hljs-comment">// 属性值已经改变了,会调用的方法</span>
-            <span class="hljs-comment">// 在该方法中有一个默认的系统属性oldValue,用于存储旧值</span>
-            <span class="hljs-built_in">print</span>(name)
-            <span class="hljs-built_in">print</span>(old)
+</code></pre>
+<ul>
+<li>方式二:try?方式(常用方式) 系统帮助我们处理异常,如果该方法出现了异常,则该方法返回nil.</li>
+<li>如果没有异常,则返回对应的对象</li>
+</ul>
+<pre><code class="lang-swift">        guard <span class="hljs-keyword">let</span> regex0 = try? <span class="hljs-type">NSRegularExpression</span>(pattern: pattern, options: .<span class="hljs-type">CaseInsensitive</span>) <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span>
         }
+</code></pre>
+<ul>
+<li>方式三:try!方法(不建议,非常危险) 直接告诉系统,该方法没有异常.</li>
+<li>注意:如果该方法出现了异常,那么程序会报错(崩溃)</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-keyword">let</span> regex1 = try! <span class="hljs-type">NSRegularExpression</span>(pattern: pattern, options: .<span class="hljs-type">CaseInsensitive</span>)
+</code></pre>
+<h3 id="-">二, 根据字符串创建类对象</h3>
+<pre><code class="lang-swift">        <span class="hljs-comment">// 0.获取命名空间</span>
+        guard <span class="hljs-keyword">let</span> nameSpace = <span class="hljs-type">NSBundle</span>.mainBundle().infoDictionary![<span class="hljs-string">"CFBundleExecutable"</span>]
+                                <span class="hljs-keyword">as</span>? <span class="hljs-type">String</span> <span class="hljs-keyword">else</span> {
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">"没有获取命名空间"</span>)
+            <span class="hljs-keyword">return</span>
+        }
+
+        <span class="hljs-comment">// 1.根据字符串获取对应的Class</span>
+        guard <span class="hljs-keyword">let</span> anyClass = <span class="hljs-type">NSClassFromString</span>(nameSpace + <span class="hljs-string">"."</span> + childVcName) <span class="hljs-keyword">else</span> {
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">"没有获取到字符串对应的Class"</span>)
+            <span class="hljs-keyword">return</span>
+        }
+
+        <span class="hljs-comment">// 2.将对应的AnyClass转成控制器的类型</span>
+        guard <span class="hljs-keyword">let</span> childVcType = anyClass <span class="hljs-keyword">as</span>? <span class="hljs-type">UIViewController</span>.<span class="hljs-type">Type</span> <span class="hljs-keyword">else</span> {
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">"没有获取对应控制器的类型"</span>)
+            <span class="hljs-keyword">return</span>
+        }
+
+        <span class="hljs-comment">// 3.创建对应的控制器对象</span>
+        <span class="hljs-keyword">let</span> childVc = childVcType.<span class="hljs-keyword">init</span>()
+</code></pre>
+<h3 id="-">三, 类方法</h3>
+<ul>
+<li>swift中类方法是以class开头的方法.类似于OC中+开头的方法</li>
+</ul>
+<pre><code class="lang-swift">    <span class="hljs-keyword">class</span> <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">createButton</span><span class="hljs-params">(imageName : String, bgImageName : String)</span> -&gt; <span class="hljs-title">UIButton</span> </span>{
+        <span class="hljs-comment">// 1.创建btn</span>
+        <span class="hljs-keyword">let</span> btn = <span class="hljs-type">UIButton</span>()
+
+        <span class="hljs-comment">// 2.设置btn的属性</span>
+        btn.setImage(<span class="hljs-type">UIImage</span>(named: imageName), forState: .<span class="hljs-type">Normal</span>)
+
+        btn.sizeToFit()
+
+        <span class="hljs-keyword">return</span> btn
     }
-}
 
-<span class="hljs-keyword">let</span> p = <span class="hljs-type">Person</span>()
-p.name = <span class="hljs-string">"why"</span>
-p.name = <span class="hljs-string">"yz"</span>
-
-<span class="hljs-comment">// 输出结果</span>
-<span class="hljs-comment">/*
-nil
-Optional("why")
-Optional("why")
-nil
-Optional("why")
-Optional("yz")
-Optional("yz")
-Optional("why")
-
-*/</span>
+<span class="hljs-comment">// 外边怎么用</span>
+    private lazy <span class="hljs-keyword">var</span> composeBtn : <span class="hljs-type">UIButton</span> = <span class="hljs-type">UIButton</span>.createButton(<span class="hljs-string">"tabbar_compose_icon_add"</span>, bgImageName: <span class="hljs-string">"tabbar_compose_button"</span>)
 </code></pre>
 
                     
@@ -504,10 +531,8 @@ Optional("why")
         </div>
 
         
-        <a href="../01-swiftfoundation/init.html" class="navigation navigation-prev " aria-label="Previous page: init()"><i class="fa fa-angle-left"></i></a>
+        <a href="../weibo-sina/README.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Weibo-Sina"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../01-swiftfoundation/closure.html" class="navigation navigation-next " aria-label="Next page: Closure(闭包)"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

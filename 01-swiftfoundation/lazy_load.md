@@ -12,3 +12,13 @@
         return ["why", "lmj", "lnj"]
     }()
 ```
+
+```swift
+
+private lazy var imageNames = ["tabbar_home", "tabbar_message_center"]
+
+private lazy var composeBtn : UIButton = UIButton()
+
+private lazy var composeBtn : UIButton = UIButton(imageName: "tabbar_compose_icon_add", bgImageName: "tabbar_compose_button")
+
+```

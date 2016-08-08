@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Monitor-Property | NJSwift</title>
+        <title>Weibo-Sina | NJSwift</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../01-swiftfoundation/closure.html" />
+    <link rel="next" href="../weibo-sina/secondday.html" />
     
     
-    <link rel="prev" href="../01-swiftfoundation/init.html" />
+    <link rel="prev" href="../01-swiftfoundation/extension.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1.7.3" data-basepath=".." data-revision="1470658308479">
+    <div class="book"  data-level="2" data-basepath=".." data-revision="1470658308479">
     
 
 <div class="book-summary">
@@ -249,7 +249,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="1.7.3" data-path="01-swiftfoundation/monitor-property.html">
+        <li class="chapter " data-level="1.7.3" data-path="01-swiftfoundation/monitor-property.html">
             
                 
                     <a href="../01-swiftfoundation/monitor-property.html">
@@ -323,7 +323,7 @@
         </li>
     
         
-        <li class="chapter " data-level="2" data-path="weibo-sina/README.html">
+        <li class="chapter active" data-level="2" data-path="weibo-sina/README.html">
             
                 
                     <a href="../weibo-sina/README.html">
@@ -449,51 +449,34 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_433">
+                    <section class="normal" id="section-gitbook_439">
                     
-                        <h1 id="monitor-property">Monitor-Property</h1>
+                        <h2 id="weibo-sina">Weibo-Sina</h2>
 <ul>
-<li>属性监听器, <code>newValue/oldValue</code><ul>
-<li><code>willSet</code></li>
-<li><code>didSet</code></li>
+<li>自定义Log</li>
 </ul>
-</li>
-</ul>
-<pre><code class="lang-swift">
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>: <span class="hljs-title">NSObject</span> </span>{
-    <span class="hljs-comment">// 属性监听器</span>
-        <span class="hljs-comment">// 可以给newValue自定义名称</span>
-        <span class="hljs-keyword">willSet</span> (<span class="hljs-keyword">new</span>){ <span class="hljs-comment">// 属性即将改变,还未改变时会调用的方法</span>
-            <span class="hljs-comment">// 在该方法中有一个默认的系统属性newValue,用于存储新值</span>
-            <span class="hljs-built_in">print</span>(name)
-            <span class="hljs-built_in">print</span>(<span class="hljs-keyword">new</span>)
-        }
-        <span class="hljs-comment">// 可以给oldValue自定义名称</span>
-        <span class="hljs-keyword">didSet</span> (old) { <span class="hljs-comment">// 属性值已经改变了,会调用的方法</span>
-            <span class="hljs-comment">// 在该方法中有一个默认的系统属性oldValue,用于存储旧值</span>
-            <span class="hljs-built_in">print</span>(name)
-            <span class="hljs-built_in">print</span>(old)
-        }
-    }
+<pre><code class="lang-swift"><span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">LMJLog</span><span class="hljs-generics">&lt;T&gt;</span><span class="hljs-params">(message: T, file: String = <span class="hljs-keyword">__FILE__</span>, funcName: String = <span class="hljs-keyword">__FUNCTION__</span>, lineNum: Int = <span class="hljs-keyword">__LINE__</span>)</span>
+</span>{
+    #<span class="hljs-keyword">if</span> <span class="hljs-type">DEBUG</span>
+
+        <span class="hljs-keyword">let</span> fileName = (file <span class="hljs-keyword">as</span> <span class="hljs-type">NSString</span>).lastPathComponent
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">"<span class="hljs-subst">\(fileName)</span>-[<span class="hljs-subst">\(funcName)</span>] (<span class="hljs-subst">\(lineNum)</span>): <span class="hljs-subst">\(message)</span>"</span>)
+
+    #endif
 }
-
-<span class="hljs-keyword">let</span> p = <span class="hljs-type">Person</span>()
-p.name = <span class="hljs-string">"why"</span>
-p.name = <span class="hljs-string">"yz"</span>
-
-<span class="hljs-comment">// 输出结果</span>
-<span class="hljs-comment">/*
-nil
-Optional("why")
-Optional("why")
-nil
-Optional("why")
-Optional("yz")
-Optional("yz")
-Optional("why")
-
-*/</span>
 </code></pre>
+<ul>
+<li>配置DEBUG的<code>宏</code>环境</li>
+</ul>
+<p><img src="../images/Snip20160807_3.png" alt=""></p>
+<ul>
+<li>添加忽略文件的时候的pods的配置</li>
+</ul>
+<p><img src="../images/Snip20160807_5.png" alt=""></p>
+<ul>
+<li>应用展示的名字</li>
+</ul>
+<p><img src="../images/Snip20160807_6.png" alt=""></p>
 
                     
                     </section>
@@ -504,10 +487,10 @@ Optional("why")
         </div>
 
         
-        <a href="../01-swiftfoundation/init.html" class="navigation navigation-prev " aria-label="Previous page: init()"><i class="fa fa-angle-left"></i></a>
+        <a href="../01-swiftfoundation/extension.html" class="navigation navigation-prev " aria-label="Previous page: Extension"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../01-swiftfoundation/closure.html" class="navigation navigation-next " aria-label="Next page: Closure(闭包)"><i class="fa fa-angle-right"></i></a>
+        <a href="../weibo-sina/secondday.html" class="navigation navigation-next " aria-label="Next page: SecondDay"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

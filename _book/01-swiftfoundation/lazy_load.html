@@ -18,6 +18,8 @@
     
     
     
+    <link rel="next" href="../01-swiftfoundation/extension.html" />
+    
     
     <link rel="prev" href="../01-swiftfoundation/closure.html" />
     
@@ -31,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1.9" data-basepath=".." data-revision="1470545564885">
+    <div class="book"  data-level="1.9" data-basepath=".." data-revision="1470658308479">
     
 
 <div class="book-summary">
@@ -299,6 +301,60 @@
             
         </li>
     
+        
+        <li class="chapter " data-level="1.10" data-path="01-swiftfoundation/extension.html">
+            
+                
+                    <a href="../01-swiftfoundation/extension.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.10.</b>
+                        
+                         Extension
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2" data-path="weibo-sina/README.html">
+            
+                
+                    <a href="../weibo-sina/README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                         Weibo-Sina
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="2.1" data-path="weibo-sina/secondday.html">
+            
+                
+                    <a href="../weibo-sina/secondday.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                         SecondDay
+                    </a>
+                
+            
+            
+        </li>
+    
 
             </ul>
             
@@ -393,7 +449,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_2808">
+                    <section class="normal" id="section-gitbook_432">
                     
                         <h1 id="lazy-load">Lazy Load</h1>
 <ul>
@@ -409,6 +465,13 @@
         <span class="hljs-keyword">return</span> [<span class="hljs-string">"why"</span>, <span class="hljs-string">"lmj"</span>, <span class="hljs-string">"lnj"</span>]
     }()
 </code></pre>
+<pre><code class="lang-swift">
+private lazy <span class="hljs-keyword">var</span> imageNames = [<span class="hljs-string">"tabbar_home"</span>, <span class="hljs-string">"tabbar_message_center"</span>]
+
+private lazy <span class="hljs-keyword">var</span> composeBtn : <span class="hljs-type">UIButton</span> = <span class="hljs-type">UIButton</span>()
+
+private lazy <span class="hljs-keyword">var</span> composeBtn : <span class="hljs-type">UIButton</span> = <span class="hljs-type">UIButton</span>(imageName: <span class="hljs-string">"tabbar_compose_icon_add"</span>, bgImageName: <span class="hljs-string">"tabbar_compose_button"</span>)
+</code></pre>
 
                     
                     </section>
@@ -419,8 +482,10 @@
         </div>
 
         
-        <a href="../01-swiftfoundation/closure.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Closure(闭包)"><i class="fa fa-angle-left"></i></a>
+        <a href="../01-swiftfoundation/closure.html" class="navigation navigation-prev " aria-label="Previous page: Closure(闭包)"><i class="fa fa-angle-left"></i></a>
         
+        
+        <a href="../01-swiftfoundation/extension.html" class="navigation navigation-next " aria-label="Next page: Extension"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

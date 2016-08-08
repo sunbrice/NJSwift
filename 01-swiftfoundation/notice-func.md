@@ -78,8 +78,20 @@ test()
 //demo
 ```
 
+### swift支持方法的重载
 
+- 方法的重载:方法名称相同,但是参数不同.
+    - 1.参数的类型不同
+    - 2.参数的个数不同
+    - `private`在当前文件中可以访问,但是其他文件不能访问
 
+```swift
+
+private func addChildViewController(childVc: UIViewController, title : String, imageName : String) {
+
+    }
+
+```
 
 
 

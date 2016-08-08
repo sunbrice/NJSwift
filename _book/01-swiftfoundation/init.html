@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1.7.2" data-basepath=".." data-revision="1470545564885">
+    <div class="book"  data-level="1.7.2" data-basepath=".." data-revision="1470658308479">
     
 
 <div class="book-summary">
@@ -301,6 +301,60 @@
             
         </li>
     
+        
+        <li class="chapter " data-level="1.10" data-path="01-swiftfoundation/extension.html">
+            
+                
+                    <a href="../01-swiftfoundation/extension.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.10.</b>
+                        
+                         Extension
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2" data-path="weibo-sina/README.html">
+            
+                
+                    <a href="../weibo-sina/README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                         Weibo-Sina
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="2.1" data-path="weibo-sina/secondday.html">
+            
+                
+                    <a href="../weibo-sina/secondday.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                         SecondDay
+                    </a>
+                
+            
+            
+        </li>
+    
 
             </ul>
             
@@ -395,7 +449,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_2800">
+                    <section class="normal" id="section-gitbook_431">
                     
                         <h1 id="init">init()</h1>
 <ul>
@@ -462,6 +516,25 @@
     }
 
     <span class="hljs-keyword">override</span> <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">setValue</span><span class="hljs-params">(value: AnyObject?, forUndefinedKey key: String)</span> </span>{}
+</code></pre>
+<ul>
+<li><code>convenience</code> : 便利,使用convenience修饰的构造函数叫做便利构造函数<ul>
+<li>遍历构造函数通常用在对系统的类进行构造函数的扩充时使用</li>
+</ul>
+</li>
+<li>遍历构造函数的特点<ul>
+<li>1.遍历构造函数通常都是写在extension里面</li>
+<li>2.遍历构造函数init前面需要加载convenience</li>
+<li>3.在遍历构造函数中需要明确的调用self.init()</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-swift">    convenience <span class="hljs-keyword">init</span> (imageName : <span class="hljs-type">String</span>, bgImageName : <span class="hljs-type">String</span>) {
+        <span class="hljs-keyword">self</span>.<span class="hljs-keyword">init</span>()
+
+        setImage(<span class="hljs-type">UIImage</span>(named: imageName), forState: .<span class="hljs-type">Normal</span>)
+        sizeToFit()
+    }
 </code></pre>
 
                     
