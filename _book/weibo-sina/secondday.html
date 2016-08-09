@@ -18,6 +18,8 @@
     
     
     
+    <link rel="next" href="../weibo-sina/thirdday.html" />
+    
     
     <link rel="prev" href="../weibo-sina/README.html" />
     
@@ -31,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2.1" data-basepath=".." data-revision="1470658308479">
+    <div class="book"  data-level="2.1" data-basepath=".." data-revision="1470701870022">
     
 
 <div class="book-summary">
@@ -353,6 +355,22 @@
             
         </li>
     
+        
+        <li class="chapter " data-level="2.2" data-path="weibo-sina/thirdday.html">
+            
+                
+                    <a href="../weibo-sina/thirdday.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                         ThirdDay
+                    </a>
+                
+            
+            
+        </li>
+    
 
             </ul>
             
@@ -447,7 +465,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_440">
+                    <section class="normal" id="section-gitbook_231">
                     
                         <h1 id="secondday">SecondDay</h1>
 <h3 id="-">一, 异常处理</h3>
@@ -521,6 +539,60 @@
 <span class="hljs-comment">// 外边怎么用</span>
     private lazy <span class="hljs-keyword">var</span> composeBtn : <span class="hljs-type">UIButton</span> = <span class="hljs-type">UIButton</span>.createButton(<span class="hljs-string">"tabbar_compose_icon_add"</span>, bgImageName: <span class="hljs-string">"tabbar_compose_button"</span>)
 </code></pre>
+<h3 id="swiftsel">swift中的SEL和事件监听</h3>
+<ul>
+<li>Selector两种写法: 1&gt;Selector(&quot;composeBtnClick&quot;) 2&gt; &quot;composeBtnClick&quot;</li>
+<li>事件监听本质发送消息.但是发送消息是OC的特性</li>
+<li>将方法包装成@SEL --&gt; 类中查找方法列表 --&gt; 根据@SEL找到imp指针(函数指针) --&gt; 执行函数</li>
+<li>如果swift中将一个函数声明称private,那么该函数不会被添加到方法列表中</li>
+<li>如果在private前面加上@objc,那么该方法依然会被添加到方法列表中</li>
+</ul>
+<pre><code class="lang-swift">composeBtn.addTarget(<span class="hljs-keyword">self</span>, action: <span class="hljs-string">"composeBtnClick"</span>, forControlEvents: .<span class="hljs-type">TouchUpInside</span>)
+
+<span class="hljs-preprocessor">@objc</span> private <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">composeBtnClick</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">"composeBtnClick"</span>)
+    }
+</code></pre>
+<h3 id="icon">访客视图中的icon的缩放问题</h3>
+<p><img src="../images/Snip20160809_1.png" alt=""></p>
+<h3 id="animation">animation</h3>
+<pre><code class="lang-swift">        <span class="hljs-comment">// 1.创建动画</span>
+        <span class="hljs-keyword">let</span> rotationAnim = <span class="hljs-type">CABasicAnimation</span>(keyPath: <span class="hljs-string">"transform.rotation.z"</span>)
+
+        <span class="hljs-comment">// 2.设置动画的属性</span>
+        rotationAnim.fromValue = <span class="hljs-number">0</span>
+        rotationAnim.toValue = <span class="hljs-type">M_PI</span> * <span class="hljs-number">2</span>
+        rotationAnim.repeatCount = <span class="hljs-type">MAXFLOAT</span>
+        rotationAnim.duration = <span class="hljs-number">5</span>
+        rotationAnim.removedOnCompletion = <span class="hljs-built_in">false</span>
+
+        <span class="hljs-comment">// 3.将动画添加到layer中</span>
+        rotationView.layer.addAnimation(rotationAnim, forKey: <span class="hljs-built_in">nil</span>)
+</code></pre>
+<h3 id="initwithfame">initWithFame的注意点</h3>
+<ul>
+<li>swift中规定:重写控件的<code>init(frame方法)</code>或者init()方法,必须重写<code>init?(coder aDecoder: NSCoder)</code></li>
+</ul>
+<pre><code class="lang-swift">    <span class="hljs-comment">// MARK:- 重写init函数</span>
+    <span class="hljs-keyword">override</span> <span class="hljs-keyword">init</span>(frame: <span class="hljs-type">CGRect</span>) {
+        <span class="hljs-keyword">super</span>.<span class="hljs-keyword">init</span>(frame : frame)
+    }
+
+    <span class="hljs-comment">// swift中规定:重写控件的init(frame方法)或者init()方法,必须重写init?(coder aDecoder: NSCoder)</span>
+    required <span class="hljs-keyword">init</span>?(coder aDecoder: <span class="hljs-type">NSCoder</span>) {
+        fatalError(<span class="hljs-string">"init(coder:) has not been implemented"</span>)
+    }
+</code></pre>
+<h3 id="modalview">modal后的控制器的view的背后仍然显示其他控制器控件</h3>
+<pre><code class="lang-swift"><span class="hljs-comment">// 2.创建弹出的控制器</span>
+        <span class="hljs-keyword">let</span> popoverVc = <span class="hljs-type">PopoverViewController</span>()
+
+        <span class="hljs-comment">// 3.设置控制器的modal样式</span>
+        popoverVc.modalPresentationStyle = .<span class="hljs-type">Custom</span>
+
+        <span class="hljs-comment">// 4.弹出控制器</span>
+        presentViewController(popoverVc, animated: <span class="hljs-built_in">true</span>, completion: <span class="hljs-built_in">nil</span>)
+</code></pre>
 
                     
                     </section>
@@ -531,8 +603,10 @@
         </div>
 
         
-        <a href="../weibo-sina/README.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Weibo-Sina"><i class="fa fa-angle-left"></i></a>
+        <a href="../weibo-sina/README.html" class="navigation navigation-prev " aria-label="Previous page: Weibo-Sina"><i class="fa fa-angle-left"></i></a>
         
+        
+        <a href="../weibo-sina/thirdday.html" class="navigation navigation-next " aria-label="Next page: ThirdDay"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

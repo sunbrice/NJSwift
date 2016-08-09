@@ -18,4 +18,5 @@
    * [Extension](01-swiftfoundation/extension.md)
 * [Weibo-Sina](weibo-sina/README.md)
    * [SecondDay](weibo-sina/secondday.md)
+   * [ThirdDay](weibo-sina/thirdday.md)
 

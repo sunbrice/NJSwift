@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>SwiftFoundation | NJSwift</title>
+        <title>ThirdDay | NJSwift</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,8 @@
     
     
     
-    <link rel="next" href="../01-swiftfoundation/string.html" />
     
-    
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../weibo-sina/secondday.html" />
     
 
         
@@ -33,7 +31,7 @@
 
 
         
-    <div class="book"  data-level="1" data-basepath=".." data-revision="1470701870022">
+    <div class="book"  data-level="2.2" data-basepath=".." data-revision="1470701870022">
     
 
 <div class="book-summary">
@@ -65,7 +63,7 @@
         </li>
     
         
-        <li class="chapter active" data-level="1" data-path="01-swiftfoundation/README.html">
+        <li class="chapter " data-level="1" data-path="01-swiftfoundation/README.html">
             
                 
                     <a href="../01-swiftfoundation/README.html">
@@ -356,7 +354,7 @@
         </li>
     
         
-        <li class="chapter " data-level="2.2" data-path="weibo-sina/thirdday.html">
+        <li class="chapter active" data-level="2.2" data-path="weibo-sina/thirdday.html">
             
                 
                     <a href="../weibo-sina/thirdday.html">
@@ -465,198 +463,9 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_215">
+                    <section class="normal" id="section-gitbook_232">
                     
-                        <h1 id="swiftfoundation">SwiftFoundation</h1>
-<ul>
-<li>swift中定义标识符:必须制定该标识符是一个常量还是一个变量<ul>
-<li>var(变量)/let(常量) 标识符的名称 : 标识符的类型 = 初始化值</li>
-</ul>
-</li>
-</ul>
-<pre><code class="lang-swift"><span class="hljs-keyword">var</span> a : <span class="hljs-type">Int</span> = <span class="hljs-number">10</span>;
-<span class="hljs-keyword">let</span> b : <span class="hljs-type">Double</span> = <span class="hljs-number">3.14</span>;
-a = <span class="hljs-number">29</span>;
-<span class="hljs-comment">// b = 3.11 错误写法</span>
-</code></pre>
-<ul>
-<li>1.在开发中优先使用常量,只有在需要修改时,在修改成var</li>
-<li>2.常量本质:保存的内存地址不可以修改,但是可以通过内存地址拿到对象,之后修改对象内部的属性</li>
-</ul>
-<pre><code class="lang-swift"><span class="hljs-keyword">let</span> view : <span class="hljs-type">UIView</span> = <span class="hljs-type">UIView</span>()
-<span class="hljs-comment">//  view = UIView() 错误写法</span>
-view.backgroundColor = <span class="hljs-type">UIColor</span>.redColor()
-</code></pre>
-<h2 id="">类型推导</h2>
-<ul>
-<li>可以通过:option + 鼠标左键,查看一个标识符的类型</li>
-</ul>
-<pre><code class="lang-swift">
-<span class="hljs-comment">// 类型推导</span>
-<span class="hljs-comment">// 可以通过:option + 鼠标左键,查看一个标识符的类型</span>
-<span class="hljs-comment">// var a : Int = 30</span>
-<span class="hljs-keyword">var</span> a = <span class="hljs-number">30</span>
-</code></pre>
-<h2 id="">基本运算</h2>
-<ul>
-<li>Swift中没有隐式转化,不会将整形自动转成浮点型</li>
-</ul>
-<pre><code class="lang-swift"><span class="hljs-comment">// 将整型转成浮点型</span>
-<span class="hljs-keyword">let</span> result = <span class="hljs-type">Double</span>(m) + n
-<span class="hljs-comment">// 将浮点型转成整型</span>
-<span class="hljs-keyword">let</span> result1 = m + <span class="hljs-type">Int</span>(n)
-</code></pre>
-<h2 id="">逻辑分支</h2>
-<ul>
-<li><code>if-else if -else</code></li>
-<li>1&gt; if后面的()可以省略</li>
-<li>2&gt; 判断句不再有非0即真.必须有明确的Bool值:true/false</li>
-</ul>
-<pre><code class="lang-swift">
-<span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span>
-
-<span class="hljs-keyword">if</span> a != <span class="hljs-number">0</span> {
-    <span class="hljs-built_in">print</span>(<span class="hljs-string">"a不等于0"</span>)
-} <span class="hljs-keyword">else</span> {
-    <span class="hljs-built_in">print</span>(<span class="hljs-string">"a等于0"</span>)
-}
-</code></pre>
-<h2 id="guard--else"><strong>guard 判断 else{}</strong></h2>
-<ul>
-<li>guard必须用在函数</li>
-<li>如果条件成立,者会执行后面的代码块</li>
-<li>如果条件不成立,则会执行{}中的语句,并且{}中必须跟上</li>
-</ul>
-<pre><code class="lang-swift">
-<span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">online</span><span class="hljs-params">(age : Int)</span> </span>{
-    guard age &gt;= <span class="hljs-number">18</span> <span class="hljs-keyword">else</span> {
-        <span class="hljs-built_in">print</span>(<span class="hljs-string">"未成年不能上网"</span>)
-        <span class="hljs-keyword">return</span>
-    }
-
-    guard 带了身份证 <span class="hljs-keyword">else</span> {
-        <span class="hljs-built_in">print</span>(<span class="hljs-string">"不可以上网,回家拿身份证"</span>)
-        <span class="hljs-keyword">return</span>
-    }
-
-    guard 带了钱 <span class="hljs-keyword">else</span> {
-        <span class="hljs-built_in">print</span>(<span class="hljs-string">"回家拿钱"</span>)
-        <span class="hljs-keyword">return</span>
-    }
-
-    <span class="hljs-built_in">print</span>(<span class="hljs-string">"留下来上网"</span>)
-}
-</code></pre>
-<h2 id="switch"><code>switch</code></h2>
-<ul>
-<li>1&gt; switch可以不跟()</li>
-<li>2&gt; case语句结束后可以不跟break,默认系统会加</li>
-<li>3&gt; 如果希望一个case中出现case穿透,那么可以在case语句结束后跟上fallthrough</li>
-<li>4&gt; case后面可以跟多个条件,多个条件以,分割</li>
-</ul>
-<pre><code class="lang-swift">
-<span class="hljs-keyword">switch</span> sex {
-    <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>, <span class="hljs-number">1</span>:
-        <span class="hljs-built_in">print</span>(<span class="hljs-string">"正常人"</span>)
-    <span class="hljs-keyword">default</span>:
-        <span class="hljs-built_in">print</span>(<span class="hljs-string">"其他"</span>)
-}
-</code></pre>
-<ul>
-<li>5&gt; switch可以判断浮点型</li>
-</ul>
-<pre><code class="lang-swift"><span class="hljs-keyword">let</span> a : <span class="hljs-type">Double</span> = <span class="hljs-number">3.14</span>
-<span class="hljs-keyword">switch</span> a {
-<span class="hljs-keyword">case</span> <span class="hljs-number">3.14</span>:
-    <span class="hljs-built_in">print</span>(<span class="hljs-string">"π"</span>)
-<span class="hljs-keyword">default</span>:
-    <span class="hljs-built_in">print</span>(<span class="hljs-string">"非π"</span>)
-}
-</code></pre>
-<ul>
-<li>6&gt; switch可以判断字符串</li>
-</ul>
-<pre><code class="lang-swift"><span class="hljs-keyword">let</span> m = <span class="hljs-number">20</span>
-<span class="hljs-keyword">let</span> n = <span class="hljs-number">30</span>
-<span class="hljs-keyword">let</span> opration = <span class="hljs-string">"+"</span>
-
-<span class="hljs-keyword">var</span> result = <span class="hljs-number">0</span>
-
-<span class="hljs-keyword">switch</span> opration {
-<span class="hljs-keyword">case</span> <span class="hljs-string">"+"</span>:
-    result = m + n
-<span class="hljs-keyword">case</span> <span class="hljs-string">"-"</span>:
-    result = m - n
-<span class="hljs-keyword">case</span> <span class="hljs-string">"*"</span>:
-    result = m * n
-<span class="hljs-keyword">case</span> <span class="hljs-string">"/"</span>:
-    result = m / n
-<span class="hljs-keyword">default</span>:
-    <span class="hljs-built_in">print</span>(<span class="hljs-string">"非法操作符"</span>)
-}
-</code></pre>
-<ul>
-<li>7&gt; switch可以判断区间</li>
-</ul>
-<pre><code class="lang-swift">
-<span class="hljs-keyword">let</span> score = <span class="hljs-number">93</span>
-
-<span class="hljs-keyword">switch</span> score {
-<span class="hljs-keyword">case</span> <span class="hljs-number">0</span>..&lt;<span class="hljs-number">60</span>:
-    <span class="hljs-built_in">print</span>(<span class="hljs-string">"不及格"</span>)
-<span class="hljs-keyword">case</span> <span class="hljs-number">60</span>..&lt;<span class="hljs-number">80</span>:
-    <span class="hljs-built_in">print</span>(<span class="hljs-string">"及格"</span>)
-<span class="hljs-keyword">case</span> <span class="hljs-number">80</span>..&lt;<span class="hljs-number">90</span>:
-    <span class="hljs-built_in">print</span>(<span class="hljs-string">"良好"</span>)
-<span class="hljs-keyword">case</span> <span class="hljs-number">90</span>...<span class="hljs-number">100</span>:
-    <span class="hljs-built_in">print</span>(<span class="hljs-string">"不错噢"</span>)
-<span class="hljs-keyword">default</span>:
-    <span class="hljs-built_in">print</span>(<span class="hljs-string">"不合理的分数"</span>)
-}
-</code></pre>
-<h2 id="for-">for 循环</h2>
-<ul>
-<li>区间的遍历<code>forin写法:区间遍历0..&lt;10</code></li>
-<li>如果不需要用到下标值,可以使用<em>来代替`for </em> in 0..&lt;10`</li>
-</ul>
-<pre><code class="lang-swift"><span class="hljs-comment">// ()可以省略</span>
-<span class="hljs-keyword">for</span> <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++ {
-    <span class="hljs-built_in">print</span>(i)
-}
-
-<span class="hljs-comment">// 2.forin写法:区间遍历</span>
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..&lt;<span class="hljs-number">10</span> {
-    <span class="hljs-built_in">print</span>(i)
-}
-
-<span class="hljs-comment">// 3.forin写法:但是不需要用到下标值</span>
-<span class="hljs-comment">// 如果不需要用到下标值,可以使用_来代替</span>
-<span class="hljs-keyword">for</span> <span class="hljs-number">_</span> <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..&lt;<span class="hljs-number">10</span> {
-    <span class="hljs-built_in">print</span>(<span class="hljs-string">"hello world"</span>)
-}
-</code></pre>
-<h2 id="while">while循环</h2>
-<ul>
-<li>1&gt; while后面的()可以省略</li>
-<li>2&gt;没有非0(nil)即真</li>
-</ul>
-<pre><code class="lang-swift"><span class="hljs-comment">// 1.while循环</span>
-<span class="hljs-comment">// 1&gt; while后面的()可以省略 2&gt;没有非0(nil)即真</span>
-<span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>
-
-<span class="hljs-keyword">while</span> a &gt; <span class="hljs-number">0</span> {
-    a--
-    <span class="hljs-built_in">print</span>(a)
-}
-
-
-<span class="hljs-comment">// 2.do while循环</span>
-<span class="hljs-comment">// 1&gt; 类型while循环的差别 2&gt;do需要换成repeat</span>
-repeat {
-    a++
-    <span class="hljs-built_in">print</span>(a)
-} <span class="hljs-keyword">while</span> a &lt; <span class="hljs-number">10</span>
-</code></pre>
+                        <h1 id="thirdday">ThirdDay</h1>
 
                     
                     </section>
@@ -667,10 +476,8 @@ repeat {
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: ReadMe"><i class="fa fa-angle-left"></i></a>
+        <a href="../weibo-sina/secondday.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: SecondDay"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../01-swiftfoundation/string.html" class="navigation navigation-next " aria-label="Next page: String"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

@@ -79,13 +79,66 @@ let regex1 = try! NSRegularExpression(pattern: pattern, options: .CaseInsensitiv
 ```
 
 
-### swift中的SEL
+### swift中的SEL和事件监听
+
+- Selector两种写法: 1>Selector("composeBtnClick") 2> "composeBtnClick"
+- 事件监听本质发送消息.但是发送消息是OC的特性
+- 将方法包装成@SEL --> 类中查找方法列表 --> 根据@SEL找到imp指针(函数指针) --> 执行函数
+- 如果swift中将一个函数声明称private,那么该函数不会被添加到方法列表中
+- 如果在private前面加上@objc,那么该方法依然会被添加到方法列表中
+
+```swift
+composeBtn.addTarget(self, action: "composeBtnClick", forControlEvents: .TouchUpInside)
+
+@objc private func composeBtnClick() {
+        print("composeBtnClick")
+    }
+```
+
 ###访客视图中的icon的缩放问题
+![](../images/Snip20160809_1.png)
+
 ###animation
+```swift
+        // 1.创建动画
+        let rotationAnim = CABasicAnimation(keyPath: "transform.rotation.z")
+
+        // 2.设置动画的属性
+        rotationAnim.fromValue = 0
+        rotationAnim.toValue = M_PI * 2
+        rotationAnim.repeatCount = MAXFLOAT
+        rotationAnim.duration = 5
+        rotationAnim.removedOnCompletion = false
+
+        // 3.将动画添加到layer中
+        rotationView.layer.addAnimation(rotationAnim, forKey: nil)
+```
+
 ###initWithFame的注意点
-###modal的背后控制
+- swift中规定:重写控件的`init(frame方法)`或者init()方法,必须重写`init?(coder aDecoder: NSCoder)`
 
+```swift
+    // MARK:- 重写init函数
+    override init(frame: CGRect) {
+        super.init(frame : frame)
+    }
 
+    // swift中规定:重写控件的init(frame方法)或者init()方法,必须重写init?(coder aDecoder: NSCoder)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+```
 
+###modal后的控制器的view的背后仍然显示其他控制器控件
 
+```swift
+// 2.创建弹出的控制器
+        let popoverVc = PopoverViewController()
+
+        // 3.设置控制器的modal样式
+        popoverVc.modalPresentationStyle = .Custom
+
+        // 4.弹出控制器
+        presentViewController(popoverVc, animated: true, completion: nil)
+```
 
