@@ -133,6 +133,7 @@ extension HomeViewController : UIViewControllerAnimatedTransitioning {
 
 - 单例
 - 闭包的灵活应用
+
 ```swift
 // 定义枚举类型
 enum RequestType : String {
