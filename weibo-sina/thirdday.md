@@ -133,6 +133,7 @@ extension HomeViewController : UIViewControllerAnimatedTransitioning {
 
 - 单例
 - 闭包的灵活应用
+
 ```swift
 // 定义枚举类型
 enum RequestType : String {
@@ -224,7 +225,27 @@ extension NetworkTools {
     }
 }
 ```
+### 重写对象的description
 
+```swift
+    // MARK:- 重写description属性
+    override var description : String {
+        return dictionaryWithValuesForKeys(["access_token", "expires_in", "uid"]).description
+    }
+```
+
+### 将对象转成字典
+
+```swift
+    NSDictionary *dict = @{@"name" : @"why", @"age" : @18, @"height" : @1.88};
+
+    Person *p = [[Person alloc] init];
+    [p setValuesForKeysWithDictionary:dict];
+
+    NSDictionary *dict1 = [person dictionaryWithValuesForKeys:@[@"name", @"age", @"height"]];
+    NSLog(@"%@", dict1);
+
+```
 
 
 

@@ -19,4 +19,6 @@
 * [Weibo-Sina](weibo-sina/README.md)
    * [SecondDay](weibo-sina/secondday.md)
    * [ThirdDay](weibo-sina/thirdday.md)
+       * [property-total](weibo-sina/property-total.md)
+   * [FourthDay](weibo-sina/fourthday.md)
 
