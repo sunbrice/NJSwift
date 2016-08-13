@@ -1,5 +1,10 @@
 # 5thDay
 
+### 线程组
+- 把子线程放到线程组中
+-  进入组`dispatch_group_enter(group)`和`dispatch_group_leave(group)`
+-  通知组执行完毕` dispatch_group_notify`
+
 ```swift
 // MARK: - 缓存所有的图片, 拿到所有的图片的尺寸
 extension LMJStatusListViewModel
@@ -22,7 +27,6 @@ extension LMJStatusListViewModel
                 })
             }
         }
-
         dispatch_group_notify(group, dispatch_get_main_queue()) { () -> Void in
 
             LMJLog("线程组内下载图片完成")
