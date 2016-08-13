@@ -88,4 +88,11 @@ var callBack : ((presented : Bool) -> ())?
         self?.titleBtn.selected = presented
 
     }
+
+= 系统属性的监听
+    override var highlighted: Bool{
+        didSet{
+
+        }
+    }
 ```
