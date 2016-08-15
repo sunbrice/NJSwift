@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Class-Property | NJSwift</title>
+        <title>5thDay | NJSwift</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../01-swiftfoundation/init.html" />
+    <link rel="next" href="../weibo-sina/sixday.html" />
     
     
-    <link rel="prev" href="../01-swiftfoundation/class.html" />
+    <link rel="prev" href="../weibo-sina/fourthday.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1.7.1" data-basepath=".." data-revision="1471231759974">
+    <div class="book"  data-level="2.4" data-basepath=".." data-revision="1471231759974">
     
 
 <div class="book-summary">
@@ -217,7 +217,7 @@
                 
     
         
-        <li class="chapter active" data-level="1.7.1" data-path="01-swiftfoundation/class-property.html">
+        <li class="chapter " data-level="1.7.1" data-path="01-swiftfoundation/class-property.html">
             
                 
                     <a href="../01-swiftfoundation/class-property.html">
@@ -410,7 +410,7 @@
         </li>
     
         
-        <li class="chapter " data-level="2.4" data-path="weibo-sina/5thday.html">
+        <li class="chapter active" data-level="2.4" data-path="weibo-sina/5thday.html">
             
                 
                     <a href="../weibo-sina/5thday.html">
@@ -551,21 +551,45 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_1170">
+                    <section class="normal" id="section-gitbook_1184">
                     
-                        <h1 id="class-property">Class-Property</h1>
+                        <h1 id="5thday">5thDay</h1>
+<h3 id="">线程组</h3>
 <ul>
-<li>定义存储属性</li>
-<li>定义计算属性: 通过别的方式计算到结果的属性,称之为计算属性<ul>
-<li>计算属性并不存储实际的值，而是提供一个getter和一个可选的setter来间接获取和设置其它属性</li>
+<li>把子线程放到线程组中</li>
+<li>进入组<code>dispatch_group_enter(group)</code>和<code>dispatch_group_leave(group)</code></li>
+<li>通知组执行完毕<code>dispatch_group_notify</code></li>
 </ul>
-</li>
-<li>定义类属性: 类属性是和整个类相关的属性.而且是通过类名进行访问</li>
-</ul>
-<p><img src="../images/Snip20160807_1.png" alt=""></p>
-<ul>
-<li>在swift开发中,如果使用当前对象的某一个属性,或者调用当前对象的某一个方法时,可以直接使用,不需要加self</li>
-</ul>
+<pre><code class="lang-swift"><span class="hljs-comment">// MARK: - 缓存所有的图片, 拿到所有的图片的尺寸</span>
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">LMJStatusListViewModel</span>
+</span>{
+    <span class="hljs-comment">/// 缓存所有的图片, 拿到所有的图片的尺寸</span>
+    private <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">cachePicturesToGetImageSize</span><span class="hljs-params">(completion: <span class="hljs-params">()</span> -&gt; <span class="hljs-params">()</span>)</span>
+    </span>{
+        <span class="hljs-keyword">let</span> group = dispatch_group_create()
+
+        <span class="hljs-keyword">for</span> statusViewModel <span class="hljs-keyword">in</span> statusViewModels
+        {
+            <span class="hljs-keyword">for</span> picURL <span class="hljs-keyword">in</span> statusViewModel.picURLs_lmj
+            {
+                <span class="hljs-comment">/// 进入组</span>
+                dispatch_group_enter(group)
+
+                <span class="hljs-type">SDWebImageManager</span>.sharedManager().downloadImageWithURL(picURL, options: [], progress: <span class="hljs-built_in">nil</span>, completed: { (<span class="hljs-number">_</span>, <span class="hljs-number">_</span>, <span class="hljs-number">_</span>, <span class="hljs-number">_</span>, <span class="hljs-number">_</span>) -&gt; <span class="hljs-type">Void</span> <span class="hljs-keyword">in</span>
+                    <span class="hljs-comment">/// 离开组</span>
+                    dispatch_group_leave(group)
+                })
+            }
+        }
+        dispatch_group_notify(group, dispatch_get_main_queue()) { () -&gt; <span class="hljs-type">Void</span> <span class="hljs-keyword">in</span>
+
+            <span class="hljs-type">LMJLog</span>(<span class="hljs-string">"线程组内下载图片完成"</span>)
+            <span class="hljs-comment">///执行完成</span>
+            completion()
+        }
+    }
+}
+</code></pre>
 
                     
                     </section>
@@ -576,10 +600,10 @@
         </div>
 
         
-        <a href="../01-swiftfoundation/class.html" class="navigation navigation-prev " aria-label="Previous page: Class"><i class="fa fa-angle-left"></i></a>
+        <a href="../weibo-sina/fourthday.html" class="navigation navigation-prev " aria-label="Previous page: FourthDay"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../01-swiftfoundation/init.html" class="navigation navigation-next " aria-label="Next page: init()"><i class="fa fa-angle-right"></i></a>
+        <a href="../weibo-sina/sixday.html" class="navigation navigation-next " aria-label="Next page: SixDay"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

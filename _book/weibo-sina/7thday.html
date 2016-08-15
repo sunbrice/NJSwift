@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Class-Property | NJSwift</title>
+        <title>7thDay | NJSwift</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,8 @@
     
     
     
-    <link rel="next" href="../01-swiftfoundation/init.html" />
     
-    
-    <link rel="prev" href="../01-swiftfoundation/class.html" />
+    <link rel="prev" href="../weibo-sina/sixday.html" />
     
 
         
@@ -33,7 +31,7 @@
 
 
         
-    <div class="book"  data-level="1.7.1" data-basepath=".." data-revision="1471231759974">
+    <div class="book"  data-level="2.6" data-basepath=".." data-revision="1471231759974">
     
 
 <div class="book-summary">
@@ -217,7 +215,7 @@
                 
     
         
-        <li class="chapter active" data-level="1.7.1" data-path="01-swiftfoundation/class-property.html">
+        <li class="chapter " data-level="1.7.1" data-path="01-swiftfoundation/class-property.html">
             
                 
                     <a href="../01-swiftfoundation/class-property.html">
@@ -442,7 +440,7 @@
         </li>
     
         
-        <li class="chapter " data-level="2.6" data-path="weibo-sina/7thday.html">
+        <li class="chapter active" data-level="2.6" data-path="weibo-sina/7thday.html">
             
                 
                     <a href="../weibo-sina/7thday.html">
@@ -551,21 +549,103 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_1170">
+                    <section class="normal" id="section-gitbook_1185">
                     
-                        <h1 id="class-property">Class-Property</h1>
+                        <h1 id="7thday">7thDay</h1>
+<h3 id="textview">textview</h3>
 <ul>
-<li>定义存储属性</li>
-<li>定义计算属性: 通过别的方式计算到结果的属性,称之为计算属性<ul>
-<li>计算属性并不存储实际的值，而是提供一个getter和一个可选的setter来间接获取和设置其它属性</li>
+<li>1删除</li>
 </ul>
-</li>
-<li>定义类属性: 类属性是和整个类相关的属性.而且是通过类名进行访问</li>
-</ul>
-<p><img src="../images/Snip20160807_1.png" alt=""></p>
+<pre><code class="lang-swift"> <span class="hljs-comment">///删除</span>
+        <span class="hljs-keyword">if</span> emoticon.isRemove
+        {
+            <span class="hljs-keyword">self</span>.deleteBackward()
+            <span class="hljs-keyword">return</span>
+        }
+</code></pre>
 <ul>
-<li>在swift开发中,如果使用当前对象的某一个属性,或者调用当前对象的某一个方法时,可以直接使用,不需要加self</li>
+<li>2插入普通的文字</li>
 </ul>
+<pre><code class="lang-swift">        <span class="hljs-comment">///插入emoji</span>
+        <span class="hljs-keyword">if</span> emoticon.emojiCode != <span class="hljs-built_in">nil</span>
+        {
+            <span class="hljs-comment">///获取光标所在的位置</span>
+<span class="hljs-comment">//  let range = self.textView.selectedTextRange</span>
+            <span class="hljs-comment">///替换所在位置</span>
+<span class="hljs-comment">//  self.textView.replaceRange(&lt;#T##range: UITextRange##UITextRange#&gt;, withText: &lt;#T##String#&gt;)</span>
+
+            <span class="hljs-comment">///直接插入</span>
+            <span class="hljs-keyword">self</span>.insertText(emoticon.emojiCode!)
+
+            <span class="hljs-keyword">return</span>
+        }
+</code></pre>
+<ul>
+<li>3 图文混排<code>NSTextAttachment</code>和<code>NSAttributedString(attachment: attachment)</code></li>
+</ul>
+<pre><code class="lang-swift">
+        <span class="hljs-comment">// 4.普通表情:图文混排</span>
+        <span class="hljs-comment">// 4.1.根据图片路径创建属性字符串</span>
+        <span class="hljs-keyword">let</span> attachment = <span class="hljs-type">NSTextAttachment</span>()
+        attachment.image = <span class="hljs-type">UIImage</span>(contentsOfFile: emoticon.pngPath!)
+
+        <span class="hljs-comment">///保存字体解决bug</span>
+        <span class="hljs-keyword">let</span> font = textView.font!
+        attachment.bounds = <span class="hljs-type">CGRect</span>(x: <span class="hljs-number">0</span>, y: -<span class="hljs-number">4</span>, width: font.lineHeight, height: font.lineHeight)
+        <span class="hljs-keyword">let</span> attrImageStr = <span class="hljs-type">NSAttributedString</span>(attachment: attachment)
+
+        <span class="hljs-comment">// 4.2.创建可变的属性字符串</span>
+        <span class="hljs-keyword">let</span> attrMStr = <span class="hljs-type">NSMutableAttributedString</span>(attributedString: textView.attributedText)
+
+        <span class="hljs-comment">// 4.3.将图片属性字符串,替换到可变属性字符串的某一个位置</span>
+        <span class="hljs-comment">// 4.3.1.获取光标所在的位置</span>
+        <span class="hljs-keyword">let</span> range = textView.selectedRange
+
+        <span class="hljs-comment">// 4.3.2.替换属性字符串</span>
+        attrMStr.replaceCharactersInRange(range, withAttributedString: attrImageStr)
+
+        <span class="hljs-comment">// 显示属性字符串</span>
+        textView.attributedText = attrMStr
+
+        <span class="hljs-comment">// 将文字的大小重置</span>
+        textView.font = font
+
+        <span class="hljs-comment">// 将光标设置回原来位置 + 1</span>
+        textView.selectedRange = <span class="hljs-type">NSRange</span>(location: range.location + <span class="hljs-number">1</span>, length: <span class="hljs-number">0</span>)
+</code></pre>
+<h3 id="">图文混排后如何获得文中普通图片对应的字符串?</h3>
+<ul>
+<li>自定义NSTextAttachment, 增加属性保存图片的文字</li>
+</ul>
+<pre><code class="lang-swift">        <span class="hljs-comment">// 4.普通表情:图文混排</span>
+        <span class="hljs-comment">// 4.1.根据图片路径创建属性字符串</span>
+        <span class="hljs-keyword">let</span> attachment = <span class="hljs-type">EmoticonAttachment</span>()
+        attachment.chs = emoticon.chs
+        attachment.image = <span class="hljs-type">UIImage</span>(contentsOfFile: emoticon.pngPath!)
+        <span class="hljs-keyword">let</span> font = textView.font!
+        attachment.bounds = <span class="hljs-type">CGRect</span>(x: <span class="hljs-number">0</span>, y: -<span class="hljs-number">4</span>, width: font.lineHeight, height: font.lineHeight)
+        <span class="hljs-keyword">let</span> attrImageStr = <span class="hljs-type">NSAttributedString</span>(attachment: attachment)
+</code></pre>
+<ul>
+<li>遍历富文本字符串获得attachment</li>
+<li>把里边的对应的文职替换成文字</li>
+</ul>
+<pre><code class="lang-swift">        <span class="hljs-comment">// 1.获取属性字符串</span>
+        <span class="hljs-keyword">let</span> attrMStr = <span class="hljs-type">NSMutableAttributedString</span>(attributedString: textView.attributedText)
+
+        <span class="hljs-comment">// 2.遍历属性字符串</span>
+        <span class="hljs-keyword">let</span> range = <span class="hljs-type">NSRange</span>(location: <span class="hljs-number">0</span>, length: attrMStr.length)
+        attrMStr.<span class="hljs-class"><span class="hljs-keyword">enum</span><span class="hljs-title">erateAttributesInRange</span>(<span class="hljs-title">range</span>, <span class="hljs-title">options</span>: []) </span>{ (dict, range, <span class="hljs-number">_</span>) -&gt; <span class="hljs-type">Void</span> <span class="hljs-keyword">in</span>
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> attachment = dict[<span class="hljs-string">"NSAttachment"</span>] <span class="hljs-keyword">as</span>? <span class="hljs-type">EmoticonAttachment</span> {
+                attrMStr.replaceCharactersInRange(range, withString: attachment.chs!)
+            }
+        }
+
+        <span class="hljs-comment">// 3.获取字符串</span>
+        <span class="hljs-built_in">print</span>(attrMStr.string)
+    }
+</code></pre>
+<h2 id="">#</h2>
 
                     
                     </section>
@@ -576,10 +656,8 @@
         </div>
 
         
-        <a href="../01-swiftfoundation/class.html" class="navigation navigation-prev " aria-label="Previous page: Class"><i class="fa fa-angle-left"></i></a>
+        <a href="../weibo-sina/sixday.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: SixDay"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../01-swiftfoundation/init.html" class="navigation navigation-next " aria-label="Next page: init()"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

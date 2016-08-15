@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Class-Property | NJSwift</title>
+        <title>FourthDay | NJSwift</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../01-swiftfoundation/init.html" />
+    <link rel="next" href="../weibo-sina/5thday.html" />
     
     
-    <link rel="prev" href="../01-swiftfoundation/class.html" />
+    <link rel="prev" href="../weibo-sina/property-total.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1.7.1" data-basepath=".." data-revision="1471231759974">
+    <div class="book"  data-level="2.3" data-basepath=".." data-revision="1471231759974">
     
 
 <div class="book-summary">
@@ -217,7 +217,7 @@
                 
     
         
-        <li class="chapter active" data-level="1.7.1" data-path="01-swiftfoundation/class-property.html">
+        <li class="chapter " data-level="1.7.1" data-path="01-swiftfoundation/class-property.html">
             
                 
                     <a href="../01-swiftfoundation/class-property.html">
@@ -394,7 +394,7 @@
         </li>
     
         
-        <li class="chapter " data-level="2.3" data-path="weibo-sina/fourthday.html">
+        <li class="chapter active" data-level="2.3" data-path="weibo-sina/fourthday.html">
             
                 
                     <a href="../weibo-sina/fourthday.html">
@@ -551,20 +551,35 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_1170">
+                    <section class="normal" id="section-gitbook_1187">
                     
-                        <h1 id="class-property">Class-Property</h1>
+                        <h1 id="fourthday">FourthDay</h1>
+<h3 id="">自定义归档解挡</h3>
+<pre><code class="lang-swift">    <span class="hljs-comment">// MARK:- 归档&amp;解档</span>
+    <span class="hljs-comment">/// 解档的方法</span>
+    required <span class="hljs-keyword">init</span>?(coder aDecoder: <span class="hljs-type">NSCoder</span>) {
+        access_token = aDecoder.decodeObjectForKey(<span class="hljs-string">"access_token"</span>) <span class="hljs-keyword">as</span>? <span class="hljs-type">String</span>
+        uid = aDecoder.decodeObjectForKey(<span class="hljs-string">"uid"</span>) <span class="hljs-keyword">as</span>? <span class="hljs-type">String</span>
+    }
+
+    <span class="hljs-comment">/// 归档方法</span>
+    <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">encodeWithCoder</span><span class="hljs-params">(aCoder: NSCoder)</span> </span>{
+        aCoder.encodeObject(access_token, forKey: <span class="hljs-string">"access_token"</span>)
+        aCoder.encodeObject(uid, forKey: <span class="hljs-string">"uid"</span>)
+    }
+
+    <span class="hljs-comment">// 4.2.保存对象</span>
+    <span class="hljs-type">NSKeyedArchiver</span>.archiveRootObject(account, toFile: accountPath)
+
+    <span class="hljs-comment">// 1.2.读取信息</span>
+    <span class="hljs-keyword">let</span> account = <span class="hljs-type">NSKeyedUnarchiver</span>.unarchiveObjectWithFile(accountPath) <span class="hljs-keyword">as</span>? <span class="hljs-type">UserAccount</span>
+</code></pre>
+<h3 id="">??</h3>
 <ul>
-<li>定义存储属性</li>
-<li>定义计算属性: 通过别的方式计算到结果的属性,称之为计算属性<ul>
-<li>计算属性并不存储实际的值，而是提供一个getter和一个可选的setter来间接获取和设置其它属性</li>
+<li>?? : 如果??前面的可选类型有值,那么将前面的可选类型进行解包并且赋值<ul>
+<li>如果??前面的可选类型为nil,那么直接使用??后面的值</li>
 </ul>
 </li>
-<li>定义类属性: 类属性是和整个类相关的属性.而且是通过类名进行访问</li>
-</ul>
-<p><img src="../images/Snip20160807_1.png" alt=""></p>
-<ul>
-<li>在swift开发中,如果使用当前对象的某一个属性,或者调用当前对象的某一个方法时,可以直接使用,不需要加self</li>
 </ul>
 
                     
@@ -576,10 +591,10 @@
         </div>
 
         
-        <a href="../01-swiftfoundation/class.html" class="navigation navigation-prev " aria-label="Previous page: Class"><i class="fa fa-angle-left"></i></a>
+        <a href="../weibo-sina/property-total.html" class="navigation navigation-prev " aria-label="Previous page: property-total"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../01-swiftfoundation/init.html" class="navigation navigation-next " aria-label="Next page: init()"><i class="fa fa-angle-right"></i></a>
+        <a href="../weibo-sina/5thday.html" class="navigation navigation-next " aria-label="Next page: 5thDay"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

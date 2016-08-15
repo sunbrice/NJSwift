@@ -22,4 +22,7 @@
        * [property-total](weibo-sina/property-total.md)
    * [FourthDay](weibo-sina/fourthday.md)
    * [5thDay](weibo-sina/5thday.md)
+   * [SixDay](weibo-sina/sixday.md)
+   * [7thDay](weibo-sina/7thday.md)
+       * [Regular EXpression](weibo-sina/regular_expression.md)
 

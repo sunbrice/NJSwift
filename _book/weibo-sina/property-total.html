@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Class-Property | NJSwift</title>
+        <title>property-total | NJSwift</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../01-swiftfoundation/init.html" />
+    <link rel="next" href="../weibo-sina/fourthday.html" />
     
     
-    <link rel="prev" href="../01-swiftfoundation/class.html" />
+    <link rel="prev" href="../weibo-sina/thirdday.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1.7.1" data-basepath=".." data-revision="1471231759974">
+    <div class="book"  data-level="2.2.1" data-basepath=".." data-revision="1471231759974">
     
 
 <div class="book-summary">
@@ -217,7 +217,7 @@
                 
     
         
-        <li class="chapter active" data-level="1.7.1" data-path="01-swiftfoundation/class-property.html">
+        <li class="chapter " data-level="1.7.1" data-path="01-swiftfoundation/class-property.html">
             
                 
                     <a href="../01-swiftfoundation/class-property.html">
@@ -373,7 +373,7 @@
                 
     
         
-        <li class="chapter " data-level="2.2.1" data-path="weibo-sina/property-total.html">
+        <li class="chapter active" data-level="2.2.1" data-path="weibo-sina/property-total.html">
             
                 
                     <a href="../weibo-sina/property-total.html">
@@ -551,21 +551,103 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_1170">
+                    <section class="normal" id="section-gitbook_1188">
                     
-                        <h1 id="class-property">Class-Property</h1>
-<ul>
-<li>定义存储属性</li>
-<li>定义计算属性: 通过别的方式计算到结果的属性,称之为计算属性<ul>
-<li>计算属性并不存储实际的值，而是提供一个getter和一个可选的setter来间接获取和设置其它属性</li>
-</ul>
-</li>
-<li>定义类属性: 类属性是和整个类相关的属性.而且是通过类名进行访问</li>
-</ul>
-<p><img src="../images/Snip20160807_1.png" alt=""></p>
-<ul>
-<li>在swift开发中,如果使用当前对象的某一个属性,或者调用当前对象的某一个方法时,可以直接使用,不需要加self</li>
-</ul>
+                        <h1 id="property-total">property-total</h1>
+<pre><code class="lang-swift">
+= 存储属性
+    <span class="hljs-comment">/// 授权AccessToken</span>
+    <span class="hljs-keyword">var</span> access_token : <span class="hljs-type">String</span>?
+    <span class="hljs-comment">/// 过期时间--&gt;秒</span>
+    <span class="hljs-keyword">var</span> expires_in : <span class="hljs-type">NSTimeInterval</span> = <span class="hljs-number">0.0</span>
+
+= 单利
+    <span class="hljs-comment">// let是线程安全的</span>
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">let</span> shareInstance : <span class="hljs-type">NetworkTools</span> = {
+        <span class="hljs-keyword">let</span> tools = <span class="hljs-type">NetworkTools</span>()
+        tools.responseSerializer.acceptableContentTypes?.insert(<span class="hljs-string">"text/html"</span>)
+        <span class="hljs-keyword">return</span> tools
+    }()
+
+    <span class="hljs-comment">// MARK:- 将类设计成单例</span>
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">let</span> shareIntance : <span class="hljs-type">UserAccountViewModel</span> = <span class="hljs-type">UserAccountViewModel</span>()
+
+= <span class="hljs-type">MARK</span>:- 自定义构造函数
+    <span class="hljs-keyword">init</span>(dict : [<span class="hljs-type">String</span> : <span class="hljs-type">AnyObject</span>]) {
+        <span class="hljs-keyword">super</span>.<span class="hljs-keyword">init</span>()
+
+= <span class="hljs-keyword">didSet</span>的监听
+    <span class="hljs-comment">/// 过期时间--&gt;秒</span>
+    <span class="hljs-keyword">var</span> expires_in : <span class="hljs-type">NSTimeInterval</span> = <span class="hljs-number">0.0</span> {
+        <span class="hljs-keyword">didSet</span> {
+            expires_date = <span class="hljs-type">NSDate</span>(timeIntervalSinceNow: expires_in)
+        }
+    }
+    <span class="hljs-comment">/// 过期日期</span>
+    <span class="hljs-keyword">var</span> expires_date : <span class="hljs-type">NSDate</span>?
+
+= 懒加载属性
+    <span class="hljs-comment">// MARK:- 懒加载属性</span>
+    lazy <span class="hljs-keyword">var</span> visitorView : <span class="hljs-type">VisitorView</span> = <span class="hljs-type">VisitorView</span>.visitorView()
+    <span class="hljs-comment">// MARK:- 懒加载属性</span>
+    private lazy <span class="hljs-keyword">var</span> titleBtn : <span class="hljs-type">TitleButton</span> = <span class="hljs-type">TitleButton</span>()
+
+    lazy <span class="hljs-keyword">var</span> iconImageView: <span class="hljs-type">UIImageView</span> = {
+
+        <span class="hljs-keyword">let</span> imageView = <span class="hljs-type">UIImageView</span>(image: <span class="hljs-type">UIImage</span>(named: <span class="hljs-string">"avatar_default"</span>))
+        imageView.layer.cornerRadius = (imageView.image?.size.width)! * <span class="hljs-number">0.5</span>
+
+
+        <span class="hljs-keyword">return</span> imageView
+    }()
+= <span class="hljs-type">MARK</span>:- 计算属性
+    <span class="hljs-keyword">var</span> accountPath : <span class="hljs-type">String</span> {
+        <span class="hljs-keyword">let</span> accountPath = <span class="hljs-type">NSSearchPathForDirectoriesInDomains</span>(.<span class="hljs-type">DocumentDirectory</span>, .<span class="hljs-type">UserDomainMask</span>, <span class="hljs-built_in">true</span>).first!
+        <span class="hljs-keyword">return</span> (accountPath <span class="hljs-keyword">as</span> <span class="hljs-type">NSString</span>).stringByAppendingPathComponent(<span class="hljs-string">"accout.plist"</span>)
+    }
+    <span class="hljs-keyword">var</span> isLogin : <span class="hljs-type">Bool</span> {
+        <span class="hljs-keyword">if</span> account == <span class="hljs-built_in">nil</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-built_in">false</span>
+        }
+    }
+
+   <span class="hljs-keyword">var</span> defaultViewController : <span class="hljs-type">UIViewController</span>? {
+        <span class="hljs-keyword">let</span> isLogin = <span class="hljs-type">UserAccountViewModel</span>.shareIntance.isLogin
+        <span class="hljs-keyword">return</span> isLogin ? <span class="hljs-type">WelcomeViewController</span>() : <span class="hljs-type">UIStoryboard</span>(name: <span class="hljs-string">"Main"</span>, bundle: <span class="hljs-built_in">nil</span>).instantiateInitialViewController()
+    }
+
+= <span class="hljs-type">MARK</span>:- 重写<span class="hljs-keyword">init</span>()函数
+    <span class="hljs-keyword">init</span> () {
+        <span class="hljs-comment">// 1.从沙盒中读取中归档的信息</span>
+        account = <span class="hljs-type">NSKeyedUnarchiver</span>.unarchiveObjectWithFile(accountPath) <span class="hljs-keyword">as</span>? <span class="hljs-type">UserAccount</span>
+    }
+
+= 闭包属性
+<span class="hljs-keyword">var</span> callBack : ((presented : <span class="hljs-type">Bool</span>) -&gt; ())?
+
+
+= 自定义构造函数
+    <span class="hljs-comment">// 注意:如果自定义了一个构造函数,但是没有对默认构造函数init()进行重写,</span>
+    那么自定义的构造函数会覆盖默认的<span class="hljs-keyword">init</span>()构造函数
+    <span class="hljs-keyword">init</span>(callBack : (presented : <span class="hljs-type">Bool</span>) -&gt; ()) {
+        <span class="hljs-keyword">self</span>.callBack = callBack
+    }
+
+
+= 注意:在闭包中如果使用当前对象的属性或者调用方法,也需要加<span class="hljs-keyword">self</span>
+    <span class="hljs-comment">// 两个地方需要使用self : 1&gt; 如果在一个函数中出现歧义 2&gt; 在闭包中使用当前对象的属性和方法也需要加self</span>
+    private lazy <span class="hljs-keyword">var</span> popoverAnimator : <span class="hljs-type">PopoverAnimator</span> = <span class="hljs-type">PopoverAnimator</span> {[<span class="hljs-keyword">weak</span> <span class="hljs-keyword">self</span>] (presented) -&gt; () <span class="hljs-keyword">in</span>
+        <span class="hljs-keyword">self</span>?.titleBtn.selected = presented
+
+    }
+
+= 系统属性的监听
+    <span class="hljs-keyword">override</span> <span class="hljs-keyword">var</span> highlighted: <span class="hljs-type">Bool</span>{
+        <span class="hljs-keyword">didSet</span>{
+
+        }
+    }
+</code></pre>
 
                     
                     </section>
@@ -576,10 +658,10 @@
         </div>
 
         
-        <a href="../01-swiftfoundation/class.html" class="navigation navigation-prev " aria-label="Previous page: Class"><i class="fa fa-angle-left"></i></a>
+        <a href="../weibo-sina/thirdday.html" class="navigation navigation-prev " aria-label="Previous page: ThirdDay"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../01-swiftfoundation/init.html" class="navigation navigation-next " aria-label="Next page: init()"><i class="fa fa-angle-right"></i></a>
+        <a href="../weibo-sina/fourthday.html" class="navigation navigation-next " aria-label="Next page: FourthDay"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

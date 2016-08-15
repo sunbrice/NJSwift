@@ -18,6 +18,8 @@
     
     
     
+    <link rel="next" href="../weibo-sina/property-total.html" />
+    
     
     <link rel="prev" href="../weibo-sina/secondday.html" />
     
@@ -31,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2.2" data-basepath=".." data-revision="1470701870022">
+    <div class="book"  data-level="2.2" data-basepath=".." data-revision="1471231759974">
     
 
 <div class="book-summary">
@@ -367,6 +369,92 @@
                 
             
             
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="2.2.1" data-path="weibo-sina/property-total.html">
+            
+                
+                    <a href="../weibo-sina/property-total.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.1.</b>
+                        
+                         property-total
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.3" data-path="weibo-sina/fourthday.html">
+            
+                
+                    <a href="../weibo-sina/fourthday.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                         FourthDay
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.4" data-path="weibo-sina/5thday.html">
+            
+                
+                    <a href="../weibo-sina/5thday.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                         5thDay
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.5" data-path="weibo-sina/sixday.html">
+            
+                
+                    <a href="../weibo-sina/sixday.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                         SixDay
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.6" data-path="weibo-sina/7thday.html">
+            
+                
+                    <a href="../weibo-sina/7thday.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                         7thDay
+                    </a>
+                
+            
+            
         </li>
     
 
@@ -463,9 +551,242 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_232">
+                    <section class="normal" id="section-gitbook_1191">
                     
                         <h1 id="thirdday">ThirdDay</h1>
+<h3 id="modalviewframe">如何改变modal出来控制器view的frame</h3>
+<ul>
+<li>自定义弹出的控制器的view, 是放在一个系统的presentVc里边的containerView里边</li>
+<li>所以要自定义<code>UIPresentationController</code></li>
+<li>但是如何使用这个自定义的控制器?</li>
+<li>1, 需要设置弹出控制器的转场代理</li>
+</ul>
+<pre><code class="lang-swift">        <span class="hljs-comment">// 2.创建弹出的控制器</span>
+        <span class="hljs-keyword">let</span> popoverVc = <span class="hljs-type">PopoverViewController</span>()
+
+        <span class="hljs-comment">// 3.设置控制器的modal样式</span>
+        popoverVc.modalPresentationStyle = .<span class="hljs-type">Custom</span>
+
+        <span class="hljs-comment">// 4.设置转场的代理</span>
+        popoverVc.transitioningDelegate = <span class="hljs-keyword">self</span>
+
+        <span class="hljs-comment">// 弹出控制器</span>
+        presentViewController(popoverVc, animated: <span class="hljs-built_in">true</span>, completion: <span class="hljs-built_in">nil</span>)
+</code></pre>
+<ul>
+<li>2代理遵守<code>UIViewControllerTransitioningDelegate</code>协议, 并实现协议中的方法</li>
+<li>3在协议中返回自定义控制器<code>UIPresentationController</code></li>
+</ul>
+<pre><code class="lang-swift">    <span class="hljs-comment">///实现代理方法</span>
+    <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">presentationControllerForPresentedViewController</span><span class="hljs-params">(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController)</span> -&gt; <span class="hljs-title">UIPresentationController</span>? </span>{
+
+        <span class="hljs-keyword">return</span> <span class="hljs-type">XMGPresentationController</span>(presentedViewController: presented, presentingViewController: presenting)
+    }
+</code></pre>
+<ul>
+<li>4在自定义的<code>UIPresentationController</code>里边的<code>containerViewWillLayoutSubviews</code>里边改变presentedView的frame</li>
+</ul>
+<pre><code class="lang-swift">    <span class="hljs-comment">// MARK:- 系统回调函数</span>
+    <span class="hljs-keyword">override</span> <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">containerViewWillLayoutSubviews</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">super</span>.containerViewWillLayoutSubviews()
+
+        <span class="hljs-comment">// 1.设置弹出View的尺寸</span>
+        presentedView()?.frame = <span class="hljs-type">CGRect</span>(x: <span class="hljs-number">100</span>, y: <span class="hljs-number">55</span>, width: <span class="hljs-number">180</span>, height: <span class="hljs-number">250</span>)
+
+        <span class="hljs-comment">// 2.添加蒙版</span>
+        setupCoverView()
+    }
+</code></pre>
+<ul>
+<li>5, 如何自定义modal动画?</li>
+<li>实现<code>UIViewControllerTransitioningDelegate</code>中的2个方法, 一个是展示控制器, 还有一个就是dismiss</li>
+<li><p>在返回的对象里边要遵守<code>UIViewControllerAnimatedTransitioning</code>协议</p>
+<pre><code class="lang-swift"><span class="hljs-comment">// MARK:- 自定义转场代理的方法</span>
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">HomeViewController</span> : <span class="hljs-title">UIViewControllerTransitioningDelegate</span> </span>{
+  <span class="hljs-comment">// 目的:改变弹出View的尺寸</span>
+  <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">presentationControllerForPresentedViewController</span><span class="hljs-params">(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController)</span> -&gt; <span class="hljs-title">UIPresentationController</span>? </span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-type">XMGPresentationController</span>(presentedViewController: presented, presentingViewController: presenting)
+  }
+
+  <span class="hljs-comment">// 目的:自定义弹出的动画</span>
+  <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">animationControllerForPresentedController</span><span class="hljs-params">(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController)</span> -&gt; <span class="hljs-title">UIViewControllerAnimatedTransitioning</span>? </span>{
+      isPresented = <span class="hljs-built_in">true</span>
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>
+  }
+
+  <span class="hljs-comment">// 目的:自定义消失的动画</span>
+  <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">animationControllerForDismissedController</span><span class="hljs-params">(dismissed: UIViewController)</span> -&gt; <span class="hljs-title">UIViewControllerAnimatedTransitioning</span>? </span>{
+      isPresented = <span class="hljs-built_in">false</span>
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>
+  }
+}
+</code></pre>
+</li>
+<li><p>6, 然后遵守<code>UIViewControllerAnimatedTransitioning</code>并实现里边的方法</p>
+<ul>
+<li>一个是动画的持续时间</li>
+<li>二是自定义动画<ul>
+<li>在自定义动画方法里边需要手动添加到containerview,并且告诉动画上下文的动画执行完毕</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-comment">// MARK:- 弹出和消失动画代理的方法</span>
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">HomeViewController</span> : <span class="hljs-title">UIViewControllerAnimatedTransitioning</span> </span>{
+    <span class="hljs-comment">/// 动画执行的时间</span>
+    <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">transitionDuration</span><span class="hljs-params">(transitionContext: UIViewControllerContextTransitioning?)</span> -&gt; <span class="hljs-title">NSTimeInterval</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0.5</span>
+    }
+
+    <span class="hljs-comment">/// 获取`转场的上下文`:可以通过转场上下文获取弹出的View和消失的View</span>
+    <span class="hljs-comment">// UITransitionContextFromViewKey : 获取消失的View</span>
+    <span class="hljs-comment">// UITransitionContextToViewKey : 获取弹出的View</span>
+    <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">animateTransition</span><span class="hljs-params">(transitionContext: UIViewControllerContextTransitioning)</span> </span>{
+
+        isPresented ? animationForPresentedView(transitionContext) : animationForDismissedView(transitionContext)
+    }
+
+    <span class="hljs-comment">/// 自定义弹出动画</span>
+    private <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">animationForPresentedView</span><span class="hljs-params">(transitionContext: UIViewControllerContextTransitioning)</span> </span>{
+        <span class="hljs-comment">// 1.获取弹出的View</span>
+        <span class="hljs-keyword">let</span> presentedView = transitionContext.viewForKey(<span class="hljs-type">UITransitionContextToViewKey</span>)!
+
+        <span class="hljs-comment">// 2.将弹出的View添加到containerView中</span>
+        transitionContext.containerView()?.addSubview(presentedView)
+
+        <span class="hljs-comment">// 3.执行动画</span>
+        presentedView.transform = <span class="hljs-type">CGAffineTransformMakeScale</span>(<span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>)
+        presentedView.layer.anchorPoint = <span class="hljs-type">CGPointMake</span>(<span class="hljs-number">0.5</span>, <span class="hljs-number">0</span>)
+        <span class="hljs-type">UIView</span>.animateWithDuration(transitionDuration(transitionContext), animations: { () -&gt; <span class="hljs-type">Void</span> <span class="hljs-keyword">in</span>
+            presentedView.transform = <span class="hljs-type">CGAffineTransformIdentity</span>
+            }) { (<span class="hljs-number">_</span>) -&gt; <span class="hljs-type">Void</span> <span class="hljs-keyword">in</span>
+                <span class="hljs-comment">// 必须告诉转场上下文你已经完成动画</span>
+                transitionContext.completeTransition(<span class="hljs-built_in">true</span>)
+        }
+    }
+
+    <span class="hljs-comment">/// 自定义消失动画</span>
+    private <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">animationForDismissedView</span><span class="hljs-params">(transitionContext: UIViewControllerContextTransitioning)</span> </span>{
+        <span class="hljs-comment">// 1.获取消失的View</span>
+        <span class="hljs-keyword">let</span> dismissView = transitionContext.viewForKey(<span class="hljs-type">UITransitionContextFromViewKey</span>)
+
+        <span class="hljs-comment">// 2.执行动画</span>
+        <span class="hljs-type">UIView</span>.animateWithDuration(transitionDuration(transitionContext), animations: { () -&gt; <span class="hljs-type">Void</span> <span class="hljs-keyword">in</span>
+            dismissView?.transform = <span class="hljs-type">CGAffineTransformMakeScale</span>(<span class="hljs-number">1.0</span>, <span class="hljs-number">0.00001</span>)
+            }) { (<span class="hljs-number">_</span>) -&gt; <span class="hljs-type">Void</span> <span class="hljs-keyword">in</span>
+                dismissView?.removeFromSuperview()
+
+                <span class="hljs-comment">// 必须告诉转场上下文你已经完成动画</span>
+                transitionContext.completeTransition(<span class="hljs-built_in">true</span>)
+        }
+    }
+}
+</code></pre>
+<h3 id="afnetworking">封装AFNetworking</h3>
+<ul>
+<li>单例</li>
+<li>闭包的灵活应用</li>
+</ul>
+<pre><code class="lang-swift"><span class="hljs-comment">// 定义枚举类型</span>
+<span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">RequestType</span> : <span class="hljs-title">String</span> </span>{
+    <span class="hljs-keyword">case</span> <span class="hljs-type">GET</span> = <span class="hljs-string">"GET"</span>
+    <span class="hljs-keyword">case</span> <span class="hljs-type">POST</span> = <span class="hljs-string">"POST"</span>
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NetworkTools</span>: <span class="hljs-title">AFHTTPSessionManager</span> </span>{
+    <span class="hljs-comment">// let是线程安全的</span>
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">let</span> shareInstance : <span class="hljs-type">NetworkTools</span> = {
+        <span class="hljs-keyword">let</span> tools = <span class="hljs-type">NetworkTools</span>()
+        tools.responseSerializer.acceptableContentTypes?.insert(<span class="hljs-string">"text/html"</span>)
+
+        <span class="hljs-keyword">return</span> tools
+    }()
+}
+
+<span class="hljs-comment">// MARK:- 封装请求方法</span>
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">NetworkTools</span> </span>{
+    <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">request</span><span class="hljs-params">(methodType : RequestType, urlString : String, parameters : [String : AnyObject], finished : <span class="hljs-params">(result : AnyObject?, error : NSError?)</span> -&gt; <span class="hljs-params">()</span>)</span> </span>{
+
+        <span class="hljs-comment">// 1.定义成功的回调闭包</span>
+        <span class="hljs-keyword">let</span> successCallBack = { (task : <span class="hljs-type">NSURLSessionDataTask</span>, result : <span class="hljs-type">AnyObject</span>?) -&gt; <span class="hljs-type">Void</span> <span class="hljs-keyword">in</span>
+            finished(result: result, error: <span class="hljs-built_in">nil</span>)
+        }
+
+        <span class="hljs-comment">// 2.定义失败的回调闭包</span>
+        <span class="hljs-keyword">let</span> failureCallBack = { (task : <span class="hljs-type">NSURLSessionDataTask</span>?, error : <span class="hljs-type">NSError</span>) -&gt; <span class="hljs-type">Void</span> <span class="hljs-keyword">in</span>
+            finished(result: <span class="hljs-built_in">nil</span>, error: error)
+        }
+
+        <span class="hljs-comment">// 3.发送网络请求</span>
+        <span class="hljs-keyword">if</span> methodType == .<span class="hljs-type">GET</span> {
+            <span class="hljs-type">GET</span>(urlString, parameters: parameters, progress: <span class="hljs-built_in">nil</span>, success: successCallBack, failure: failureCallBack)
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-type">POST</span>(urlString, parameters: parameters, progress: <span class="hljs-built_in">nil</span>, success: successCallBack, failure: failureCallBack)
+        }
+
+    }
+}
+</code></pre>
+<h3 id="oauth">OAuth授权</h3>
+<ul>
+<li>开发者创建应用后会获得2个参数</li>
+<li>App Key：<code>3377518170</code></li>
+<li>App Secret：<code>c66ad551a940e0bee79f44a98bb0387f</code></li>
+<li>授权回调页：<code>http://www.itcast.cn</code></li>
+<li><p>取消授权回调页：<code>https://www.baidu.com</code></p>
+</li>
+<li><p>根据文档的url发送请求<code>https://api.weibo.com/oauth2/authorize</code></p>
+</li>
+<li><code>client_id</code> true string 申请应用时分配的AppKey。</li>
+<li><code>redirect_uri</code> true string 授权回调地址，站外应用需与设置的回调地址一致，站内应用需填写canvas page的地址。</li>
+<li>拼接 <code>https://api.weibo.com/oauth2/authorize?client_id=3377518170&amp;redirect_uri=http://www.itcast.cn</code></li>
+<li><p>进入制定的登陆界面</p>
+</li>
+<li><p>用户在指定的登陆界面登陆后, 新浪服务器会回调指定网页并在网页网址后边添加code
+<code>http://www.itcast.cn/?code=69752d88dcc3eaff9f0689cfcf5334c1</code></p>
+</li>
+<li><p><code>code=69752d88dcc3eaff9f0689cfcf5334c1</code></p>
+</li>
+<li><p>根据code对应的接口去获得accesstoken</p>
+</li>
+</ul>
+<h3 id="js">自动填充js</h3>
+<pre><code class="lang-swift">        <span class="hljs-comment">// 1.书写js代码 : javascript / java --&gt; 雷锋和雷峰塔</span>
+        <span class="hljs-keyword">let</span> jsCode = <span class="hljs-string">"document.getElementById('userId').value='1606020376@qq.com';document.getElementById('passwd').value='haomage';"</span>
+</code></pre>
+<h3 id="">封装网络工具类的接口</h3>
+<pre><code class="lang-swift"><span class="hljs-comment">// MARK:- 请求AccessToken</span>
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">NetworkTools</span> </span>{
+    <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">loadAccessToken</span><span class="hljs-params">(code : String, finished : <span class="hljs-params">(result : [String : AnyObject]?, error : NSError?)</span> -&gt; <span class="hljs-params">()</span>)</span> </span>{
+        <span class="hljs-comment">// 1.获取请求的URLString</span>
+        <span class="hljs-keyword">let</span> urlString = <span class="hljs-string">"https://api.weibo.com/oauth2/access_token"</span>
+
+        <span class="hljs-comment">// 2.获取请求的参数</span>
+        <span class="hljs-keyword">let</span> parameters = [<span class="hljs-string">"client_id"</span> : app_key, <span class="hljs-string">"client_secret"</span> : app_secret, <span class="hljs-string">"grant_type"</span> : <span class="hljs-string">"authorization_code"</span>, <span class="hljs-string">"redirect_uri"</span> : redirect_uri, <span class="hljs-string">"code"</span> : code]
+
+        <span class="hljs-comment">// 3.发送网络请求</span>
+        request(.<span class="hljs-type">POST</span>, urlString: urlString, parameters: parameters) { (result, error) -&gt; () <span class="hljs-keyword">in</span>
+            finished(result: result <span class="hljs-keyword">as</span>? [<span class="hljs-type">String</span> : <span class="hljs-type">AnyObject</span>], error: error)
+        }
+    }
+}
+</code></pre>
+<h3 id="description">重写对象的description</h3>
+<pre><code class="lang-swift">    <span class="hljs-comment">// MARK:- 重写description属性</span>
+    <span class="hljs-keyword">override</span> <span class="hljs-keyword">var</span> description : <span class="hljs-type">String</span> {
+        <span class="hljs-keyword">return</span> dictionaryWithValuesForKeys([<span class="hljs-string">"access_token"</span>, <span class="hljs-string">"expires_in"</span>, <span class="hljs-string">"uid"</span>]).description
+    }
+</code></pre>
+<h3 id="">将对象转成字典</h3>
+<pre><code class="lang-swift">    <span class="hljs-type">NSDictionary</span> *dict = @{@<span class="hljs-string">"name"</span> : @<span class="hljs-string">"why"</span>, @<span class="hljs-string">"age"</span> : @<span class="hljs-number">18</span>, @<span class="hljs-string">"height"</span> : @<span class="hljs-number">1.88</span>};
+
+    <span class="hljs-type">Person</span> *p = [[<span class="hljs-type">Person</span> alloc] <span class="hljs-keyword">init</span>];
+    [p setValuesForKeysWithDictionary:dict];
+
+    <span class="hljs-type">NSDictionary</span> *dict1 = [person dictionaryWithValuesForKeys:@[@<span class="hljs-string">"name"</span>, @<span class="hljs-string">"age"</span>, @<span class="hljs-string">"height"</span>]];
+    <span class="hljs-type">NSLog</span>(@<span class="hljs-string">"%@"</span>, dict1);
+</code></pre>
 
                     
                     </section>
@@ -476,8 +797,10 @@
         </div>
 
         
-        <a href="../weibo-sina/secondday.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: SecondDay"><i class="fa fa-angle-left"></i></a>
+        <a href="../weibo-sina/secondday.html" class="navigation navigation-prev " aria-label="Previous page: SecondDay"><i class="fa fa-angle-left"></i></a>
         
+        
+        <a href="../weibo-sina/property-total.html" class="navigation navigation-next " aria-label="Next page: property-total"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Class-Property | NJSwift</title>
+        <title>SixDay | NJSwift</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 1.0.3">
@@ -18,10 +18,10 @@
     
     
     
-    <link rel="next" href="../01-swiftfoundation/init.html" />
+    <link rel="next" href="../weibo-sina/7thday.html" />
     
     
-    <link rel="prev" href="../01-swiftfoundation/class.html" />
+    <link rel="prev" href="../weibo-sina/5thday.html" />
     
 
         
@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1.7.1" data-basepath=".." data-revision="1471231759974">
+    <div class="book"  data-level="2.5" data-basepath=".." data-revision="1471231759974">
     
 
 <div class="book-summary">
@@ -217,7 +217,7 @@
                 
     
         
-        <li class="chapter active" data-level="1.7.1" data-path="01-swiftfoundation/class-property.html">
+        <li class="chapter " data-level="1.7.1" data-path="01-swiftfoundation/class-property.html">
             
                 
                     <a href="../01-swiftfoundation/class-property.html">
@@ -426,7 +426,7 @@
         </li>
     
         
-        <li class="chapter " data-level="2.5" data-path="weibo-sina/sixday.html">
+        <li class="chapter active" data-level="2.5" data-path="weibo-sina/sixday.html">
             
                 
                     <a href="../weibo-sina/sixday.html">
@@ -551,21 +551,134 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_1170">
+                    <section class="normal" id="section-gitbook_1190">
                     
-                        <h1 id="class-property">Class-Property</h1>
+                        <h1 id="sixday">SixDay</h1>
+<h3 id="collection">collection的内容的内边距</h3>
+<pre><code class="lang-swift">        <span class="hljs-comment">// 设置collectionView的内边距</span>
+        contentInset = <span class="hljs-type">UIEdgeInsets</span>(top: edgeMargin, <span class="hljs-keyword">left</span>: edgeMargin, bottom: <span class="hljs-number">0</span>, <span class="hljs-keyword">right</span>: edgeMargin)
+</code></pre>
+<h3 id="collectionviewinit">collectionView重写init来设置流水布局</h3>
+<pre><code class="lang-swift">    <span class="hljs-keyword">init</span>()
+    {
+        <span class="hljs-keyword">let</span> layout = <span class="hljs-type">UICollectionViewFlowLayout</span>()
+
+        <span class="hljs-keyword">let</span> itemWH = (<span class="hljs-type">LMJScreenWidth</span> - <span class="hljs-number">4</span> * <span class="hljs-type">LMJ_StatusEdgeMargin</span>) / <span class="hljs-number">3</span>
+
+        layout.itemSize = <span class="hljs-type">CGSize</span>(width: itemWH, height: itemWH)
+
+        layout.minimumInteritemSpacing = <span class="hljs-number">1</span>
+        layout.minimumLineSpacing = <span class="hljs-type">LMJ_StatusEdgeMargin</span>
+
+        layout.sectionInset = <span class="hljs-type">UIEdgeInsets</span>(top: <span class="hljs-type">LMJ_StatusEdgeMargin</span>, <span class="hljs-keyword">left</span>: <span class="hljs-type">LMJ_StatusEdgeMargin</span>, bottom: <span class="hljs-number">0</span>, <span class="hljs-keyword">right</span>: <span class="hljs-type">LMJ_StatusEdgeMargin</span>)
+        layout.scrollDirection = .<span class="hljs-type">Vertical</span>
+        <span class="hljs-keyword">super</span>.<span class="hljs-keyword">init</span>(collectionViewLayout: layout)
+    }
+</code></pre>
+<h3 id="-">弹出相册控制器, 并且拿到照片</h3>
 <ul>
-<li>定义存储属性</li>
-<li>定义计算属性: 通过别的方式计算到结果的属性,称之为计算属性<ul>
-<li>计算属性并不存储实际的值，而是提供一个getter和一个可选的setter来间接获取和设置其它属性</li>
+<li>还要设置图片选中框的样式</li>
+<li>遵守<code>UIImagePickerControllerDelegate, UINavigationControllerDelegate</code>协议里边有字典能拿到选中的照片</li>
 </ul>
-</li>
-<li>定义类属性: 类属性是和整个类相关的属性.而且是通过类名进行访问</li>
-</ul>
-<p><img src="../images/Snip20160807_1.png" alt=""></p>
+<pre><code class="lang-swift">    <span class="hljs-keyword">override</span> <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">collectionView</span><span class="hljs-params">(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)</span> </span>{
+<span class="hljs-comment">//        collectionView.deselectItemAtIndexPath(indexPath, animated: true)</span>
+        <span class="hljs-comment">///判断是否能展示图片框</span>
+        <span class="hljs-keyword">if</span> !<span class="hljs-type">UIImagePickerController</span>.isSourceTypeAvailable(.<span class="hljs-type">PhotoLibrary</span>)
+        {
+            <span class="hljs-keyword">return</span>
+        }
+
+        <span class="hljs-comment">///创建图片控制器</span>
+        <span class="hljs-keyword">let</span> ipc = <span class="hljs-type">UIImagePickerController</span>()
+        <span class="hljs-comment">///设置代理, 监听选中的图片</span>
+        ipc.delegate = <span class="hljs-keyword">self</span>
+        <span class="hljs-comment">//设置弹出的图片的选择控制器的样式</span>
+        ipc.sourceType = .<span class="hljs-type">PhotoLibrary</span>
+        <span class="hljs-comment">///弹出控制器</span>
+        <span class="hljs-keyword">self</span>.presentViewController(ipc, animated: <span class="hljs-built_in">true</span>, completion: <span class="hljs-built_in">nil</span>)
+    }
+<span class="hljs-comment">// MARK: - 照片选择器的代理</span>
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">LMJPickPhotoCollectionViewController</span>: <span class="hljs-title">UIImagePickerControllerDelegate</span>, <span class="hljs-title">UINavigationControllerDelegate</span>
+</span>{
+
+    <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">imagePickerController</span><span class="hljs-params">(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?)</span> </span>{
+}
+</code></pre>
+<h3 id="cell-cell-cellcell">注意cell的循环利用, 虽然最后一个cell没有图片, 但是再返回cell的时候要给设置最右一个cell的默认图片</h3>
+<h3 id="vfl">VFL</h3>
 <ul>
-<li>在swift开发中,如果使用当前对象的某一个属性,或者调用当前对象的某一个方法时,可以直接使用,不需要加self</li>
+<li>取消需要布局控件的<code>translatesAutoresizingMaskIntoConstraints</code>属性</li>
+<li>设置字典告诉系统控件对应的key</li>
+<li>用vfl布局控件</li>
+<li>左右对齐是竖直方向的约束</li>
 </ul>
+<pre><code class="lang-swift">        collectionView.translatesAutoresizingMaskIntoConstraints = <span class="hljs-built_in">false</span>
+        toolBar.translatesAutoresizingMaskIntoConstraints = <span class="hljs-built_in">false</span>
+
+        <span class="hljs-keyword">let</span> views = [<span class="hljs-string">"tBar"</span> : toolBar, <span class="hljs-string">"cView"</span> : collectionView]
+
+<span class="hljs-keyword">var</span> cons = <span class="hljs-type">NSLayoutConstraint</span>.constraintsWithVisualFormat(<span class="hljs-string">"H:|-0-[tBar]-0-|"</span>, options: [], metrics: <span class="hljs-built_in">nil</span>, views: views)
+cons += <span class="hljs-type">NSLayoutConstraint</span>.constraintsWithVisualFormat(<span class="hljs-string">"V:|-0-[cView]-0-[tBar]-0-|"</span>, options: [.<span class="hljs-type">AlignAllLeft</span>, .<span class="hljs-type">AlignAllRight</span>], metrics: <span class="hljs-built_in">nil</span>, views: views)
+        view.addConstraints(cons)
+</code></pre>
+<h3 id="addconstaints">系统的约束使用addconstaints</h3>
+<pre><code class="lang-swift">                view.addConstraint(<span class="hljs-type">NSLayoutConstraint</span>(item: toolBar, attribute: .<span class="hljs-type">Right</span>, relatedBy: .<span class="hljs-type">Equal</span>, toItem: view, attribute: .<span class="hljs-type">Right</span>, multiplier: <span class="hljs-number">1</span>, constant: <span class="hljs-number">0</span>))
+
+                view.addConstraint(<span class="hljs-type">NSLayoutConstraint</span>(item: toolBar, attribute: .<span class="hljs-type">Left</span>, relatedBy: .<span class="hljs-type">Equal</span>, toItem: view, attribute: .<span class="hljs-type">Left</span>, multiplier: <span class="hljs-number">1</span>, constant: <span class="hljs-number">0</span>))
+                view.addConstraint(<span class="hljs-type">NSLayoutConstraint</span>(item: toolBar, attribute: .<span class="hljs-type">Bottom</span>, relatedBy: .<span class="hljs-type">Equal</span>, toItem: view, attribute: .<span class="hljs-type">Bottom</span>, multiplier: <span class="hljs-number">1</span>, constant: <span class="hljs-number">0</span>))
+</code></pre>
+<h3 id="emoticonsbundle-mainbundle">当资源在自定义的<code>Emoticons.bundle</code>里边的时候, 需要和系统的mainbundle路径进行拼接</h3>
+<pre><code class="lang-swift">        <span class="hljs-comment">///id = com.apple.emoji</span>
+        <span class="hljs-comment">// 2.根据id拼接info.plist的路径</span>
+        <span class="hljs-keyword">let</span> plistPath = <span class="hljs-type">NSBundle</span>.mainBundle().pathForResource(<span class="hljs-string">"<span class="hljs-subst">\(id)</span>/info.plist"</span>,
+        ofType: <span class="hljs-built_in">nil</span>, inDirectory: <span class="hljs-string">"Emoticons.bundle"</span>)!
+
+        <span class="hljs-comment">// 3.根据plist文件的路径读取数据 [[String : String]]</span>
+        <span class="hljs-keyword">let</span> array = <span class="hljs-type">NSArray</span>(contentsOfFile: plistPath)! <span class="hljs-keyword">as</span>! [[<span class="hljs-type">String</span> : <span class="hljs-type">String</span>]]
+</code></pre>
+<h3 id="descrption">重写descrption</h3>
+<pre><code class="lang-swift">    <span class="hljs-keyword">override</span> <span class="hljs-keyword">var</span> description : <span class="hljs-type">String</span> {
+        <span class="hljs-keyword">return</span> dictionaryWithValuesForKeys([<span class="hljs-string">"code"</span>, <span class="hljs-string">"png"</span>, <span class="hljs-string">"chs"</span>]).description
+    }
+</code></pre>
+<h3 id="plist">获取plist中图片名字有需要进行拼接</h3>
+<ul>
+<li>第一步先和文件夹名字拼接</li>
+<li>第二部和自定义bundle拼接</li>
+</ul>
+<pre><code class="lang-swift">        <span class="hljs-comment">// 4.遍历数组</span>
+        <span class="hljs-keyword">for</span> <span class="hljs-keyword">var</span> dict <span class="hljs-keyword">in</span> array {
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> png = dict[<span class="hljs-string">"png"</span>] {
+                dict[<span class="hljs-string">"png"</span>] = id + <span class="hljs-string">"/"</span> + png
+            }
+
+            emoticons.append(<span class="hljs-type">Emoticon</span>(dict: dict))
+        }
+
+            <span class="hljs-keyword">var</span> png : <span class="hljs-type">String</span>? {      <span class="hljs-comment">// 普通表情对应的图片名称</span>
+        <span class="hljs-keyword">didSet</span> {
+            guard <span class="hljs-keyword">let</span> png = png <span class="hljs-keyword">else</span> {
+                <span class="hljs-keyword">return</span>
+            }
+
+            pngPath = <span class="hljs-type">NSBundle</span>.mainBundle().bundlePath + <span class="hljs-string">"/Emoticons.bundle/"</span> + png
+        }
+    }
+</code></pre>
+<h3 id="emojicode">emoji表情code的转化</h3>
+<pre><code class="lang-swift">           <span class="hljs-comment">// 1.创建扫描器</span>
+            <span class="hljs-keyword">let</span> scanner = <span class="hljs-type">NSScanner</span>(string: code)
+
+            <span class="hljs-comment">// 2.调用方法,扫描出code中的值</span>
+            <span class="hljs-keyword">var</span> value : <span class="hljs-type">UInt32</span> = <span class="hljs-number">0</span>
+            scanner.scanHexInt(&amp;value)
+
+            <span class="hljs-comment">// 3.将value转成字符</span>
+            <span class="hljs-keyword">let</span> <span class="hljs-built_in">c</span> = <span class="hljs-type">Character</span>(<span class="hljs-type">UnicodeScalar</span>(value))
+
+            <span class="hljs-comment">// 4.将字符转成字符串</span>
+            emojiCode = <span class="hljs-type">String</span>(<span class="hljs-built_in">c</span>)
+</code></pre>
 
                     
                     </section>
@@ -576,10 +689,10 @@
         </div>
 
         
-        <a href="../01-swiftfoundation/class.html" class="navigation navigation-prev " aria-label="Previous page: Class"><i class="fa fa-angle-left"></i></a>
+        <a href="../weibo-sina/5thday.html" class="navigation navigation-prev " aria-label="Previous page: 5thDay"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../01-swiftfoundation/init.html" class="navigation navigation-next " aria-label="Next page: init()"><i class="fa fa-angle-right"></i></a>
+        <a href="../weibo-sina/7thday.html" class="navigation navigation-next " aria-label="Next page: 7thDay"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
