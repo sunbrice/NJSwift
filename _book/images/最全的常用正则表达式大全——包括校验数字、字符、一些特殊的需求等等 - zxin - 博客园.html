@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/cm.js" charset="utf-8"></script><script async="" src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/analytics.js"></script><script type="text/javascript" src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/encoder.js"></script><script src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/id.php" charset="utf-8"></script>
+<meta charset="utf-8">
+<title>最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/bundle-Custom.css">
+<link type="text/css" rel="stylesheet" href="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/136006.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/zxin/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/zxin/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/zxin/wlwmanifest.xml">
+<script src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'zxin', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/blog-common.js" type="text/javascript"></script>
+<script src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/_cm.js"></script></head>
+<body><link href="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/jiathis_share.css" rel="stylesheet" type="text/css"><div class="jiathis_style" style="height: auto; position: fixed; z-index: 100000000; top: 150px; right: 0px; overflow: hidden; width: 26px;"><table cellpadding="0" cellspacing="0"><tbody style="background:transparent"><tr><td style="background:transparent"><img src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/r1.gif" style="cursor:pointer;" onmouseover="$CKE.over()" onclick="$CKE.center(this)"></td><td><div><div class="jiadiv_01"><div style="width:100%;background:#F2F2F2;border-bottom:1px solid #E5E5E5;line-height:200%;padding-left:5px;font-size:12px"><table width="100%"><tbody><tr class="jt_sharetitle"><td align="left" style="text-align:left;line-height:25px;font-size:14px;font-weight:bold;color:#000000;">分享到...</td><td align="right" style="text-align:right;"><img src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/img_exit.gif" border="0" style="opacity:0.5;filter:alpha(opacity=50);margin:0 10px;cursor:pointer;" onclick="$CKE.shareClose();"></td></tr></tbody></table></div><div class="jiadiv_02" style="width:100%;" id="jiathis_sers"><a href="javascript:;" onclick="jiathis_sendto(&#39;weixin&#39;);return false;" class="jiatitle"><span class="jtico jtico_weixin">微信</span></a><a href="javascript:;" onclick="jiathis_sendto(&#39;tsina&#39;);return false;" class="jiatitle"><span class="jtico jtico_tsina">微博</span></a><a href="javascript:;" onclick="jiathis_sendto(&#39;copy&#39;);return false;" class="jiatitle"><span class="jtico jtico_copy">复制网址</span></a><a href="javascript:;" onclick="jiathis_sendto(&#39;email&#39;);return false;" class="jiatitle"><span class="jtico jtico_email">邮件</span></a><a href="javascript:;" onclick="jiathis_sendto(&#39;cqq&#39;);return false;" class="jiatitle"><span class="jtico jtico_cqq">QQ好友</span></a><a href="javascript:;" onclick="jiathis_sendto(&#39;qzone&#39;);return false;" class="jiatitle"><span class="jtico jtico_qzone">QQ空间</span></a><a href="javascript:;" onclick="jiathis_sendto(&#39;renren&#39;);return false;" class="jiatitle"><span class="jtico jtico_renren">人人网</span></a><a href="javascript:;" onclick="jiathis_sendto(&#39;kaixin001&#39;);return false;" class="jiatitle"><span class="jtico jtico_kaixin001">开心网</span></a><a href="javascript:;" onclick="jiathis_sendto(&#39;evernote&#39;);return false;" class="jiatitle"><span class="jtico jtico_evernote">印象笔记</span></a><a href="javascript:;" onclick="jiathis_sendto(&#39;linkedin&#39;);return false;" class="jiatitle"><span class="jtico jtico_linkedin">领英</span></a><a href="javascript:;" onclick="jiathis_sendto(&#39;feixin&#39;);return false;" class="jiatitle"><span class="jtico jtico_feixin">飞信</span></a><a href="javascript:;" onclick="jiathis_sendto(&#39;douban&#39;);return false;" class="jiatitle"><span class="jtico jtico_douban">豆瓣</span></a><a href="javascript:;" onclick="jiathis_sendto(&#39;twitter&#39;);return false;" class="jiatitle"><span class="jtico jtico_twitter">Twitter</span></a><a href="javascript:;" onclick="jiathis_sendto(&#39;fb&#39;);return false;" class="jiatitle"><span class="jtico jtico_fb">Facebook</span></a><a href="javascript:;" onclick="jiathis_sendto(&#39;ishare&#39;);return false;" class="jiatitle"><span class="jtico jtico_ishare">一键分享</span></a><a href="javascript:;" onclick="$CKE.center(this);return false;" class="jiatitle"><span class="jtico jtico_jiathis">查看更多(96)</span></a><div style="clear:both"></div></div><div class="ckepopBottom" style="width:100%;"><div style="float:left;font-size:10px"><a href="http://www.jiathis.com/help/html/what-is-jiathis" class="link_01" style="color:#333333;display:none;" target="_blank">这是什么工具?</a></div><div style="float:right;font-size:11px;margin:0 5px 0 0;"><img src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/img_012.gif" align="absmiddle" border="0"><a href="http://www.jiathis.com/index2" style="color:#333333;padding:0 3px;" class="link_01" target="_blank">JiaThis</a></div><div style="clear:both"></div></div></div></div></td></tr></tbody></table></div><iframe frameborder="0" style="position: absolute; display: none;"></iframe><div class="jiathis_style" style="height: auto; position: absolute; z-index: 100000000; display: none; top: 50%; left: 50%; overflow: auto;"><div style="border:10px solid #7F7F7F; width:300px;"><div class="jiadiv_01" style="width:300px;"><div style="background:#F2F2F2;line-height:100%;height:30px;overflow:hidden;width:300px;"><table width="100%" style="margin:5px 0 0 0;"><tbody><tr class="jt_sharetitle" style="line-height:20px!important;"><td align="left" style="text-align:left;font-size:12px;">分享到各大网站</td><td align="right"><img src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/img_exit.gif" border="0" style="margin:0 4px;cursor:pointer;" onclick="$CKE.centerClose();"></td></tr></tbody></table></div><div class="searchTxtCont"><div style="background:url(http://v3.jiathis.com/code/images/img_so.gif) no-repeat center;height:30px; width:281px"><form onsubmit="return false;"><input class="searchTxt" name="" type="text" onclick="this.value=&#39;&#39;;this.style.color=&#39;#000&#39;;" value="输入网站名或拼音缩写" onkeyup="$CKE.choose(this);"></form></div></div><div id="jiathis_sharelist" class="jiadiv_02" style="width:300px;height:300px;overflow-y:auto;"><a href="javascript:;" onclick="jiathis_sendto(&#39;weixin&#39;);return false;" class="jiatitle"><span class="jtico jtico_weixin">微信</span><input type="hidden" value="weixin,微信,wx"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;tsina&#39;);return false;" class="jiatitle"><span class="jtico jtico_tsina">微博</span><input type="hidden" value="tsina,微博,xlwb"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;cqq&#39;);return false;" class="jiatitle"><span class="jtico jtico_cqq">QQ好友</span><input type="hidden" value="cqq,QQ好友,cqq"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;qzone&#39;);return false;" class="jiatitle"><span class="jtico jtico_qzone">QQ空间</span><input type="hidden" value="qzone,QQ空间,qqkj"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;copy&#39;);return false;" class="jiatitle"><span class="jtico jtico_copy">复制网址</span><input type="hidden" value="copy,复制网址,fzwz"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;fav&#39;);return false;" class="jiatitle"><span class="jtico jtico_fav">收藏夹</span><input type="hidden" value="fav,收藏夹,scj"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;print&#39;);return false;" class="jiatitle"><span class="jtico jtico_print">打印</span><input type="hidden" value="print,打印,dy"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;email&#39;);return false;" class="jiatitle"><span class="jtico jtico_email">邮件</span><input type="hidden" value="email,邮件,yj"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;renren&#39;);return false;" class="jiatitle"><span class="jtico jtico_renren">人人网</span><input type="hidden" value="renren,人人网,rrw"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;kaixin001&#39;);return false;" class="jiatitle"><span class="jtico jtico_kaixin001">开心网</span><input type="hidden" value="kaixin001,开心网,kxw"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;evernote&#39;);return false;" class="jiatitle"><span class="jtico jtico_evernote">印象笔记</span><input type="hidden" value="evernote,印象笔记,evernote"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;linkedin&#39;);return false;" class="jiatitle"><span class="jtico jtico_linkedin">领英</span><input type="hidden" value="linkedin,领英,linkedin"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;feixin&#39;);return false;" class="jiatitle"><span class="jtico jtico_feixin">飞信</span><input type="hidden" value="feixin,飞信,fx"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;douban&#39;);return false;" class="jiatitle"><span class="jtico jtico_douban">豆瓣</span><input type="hidden" value="douban,豆瓣,db"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;twitter&#39;);return false;" class="jiatitle"><span class="jtico jtico_twitter">Twitter</span><input type="hidden" value="twitter,Twitter,twitter"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;fb&#39;);return false;" class="jiatitle"><span class="jtico jtico_fb">Facebook</span><input type="hidden" value="fb,Facebook,facebook"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;ishare&#39;);return false;" class="jiatitle"><span class="jtico jtico_ishare">一键分享</span><input type="hidden" value="ishare,一键分享,yjfx"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;ujian&#39;);return false;" class="jiatitle"><span class="jtico jtico_ujian">猜你喜欢</span><input type="hidden" value="ujian,猜你喜欢,cnxh"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;yixin&#39;);return false;" class="jiatitle"><span class="jtico jtico_yixin">易信</span><input type="hidden" value="yixin,易信,yx"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;huaban&#39;);return false;" class="jiatitle"><span class="jtico jtico_huaban">花瓣网</span><input type="hidden" value="huaban,花瓣网,hbw"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;tqq&#39;);return false;" class="jiatitle"><span class="jtico jtico_tqq">腾讯微博</span><input type="hidden" value="tqq,腾讯微博,txwb"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;googleplus&#39;);return false;" class="jiatitle"><span class="jtico jtico_googleplus">Google+</span><input type="hidden" value="googleplus,Google+,googlej"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;alibaba&#39;);return false;" class="jiatitle"><span class="jtico jtico_alibaba">阿里巴巴</span><input type="hidden" value="alibaba,阿里巴巴,albb"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;xiaoyou&#39;);return false;" class="jiatitle"><span class="jtico jtico_xiaoyou">朋友网</span><input type="hidden" value="xiaoyou,朋友网,pyw"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;sdonote&#39;);return false;" class="jiatitle"><span class="jtico jtico_sdonote">麦库记事</span><input type="hidden" value="sdonote,麦库记事,mkjs"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;baidu&#39;);return false;" class="jiatitle"><span class="jtico jtico_baidu">百度搜藏</span><input type="hidden" value="baidu,百度搜藏,bdsc"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;gmail&#39;);return false;" class="jiatitle"><span class="jtico jtico_gmail">Gmail邮箱</span><input type="hidden" value="gmail,Gmail邮箱,gmailyx"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;ydnote&#39;);return false;" class="jiatitle"><span class="jtico jtico_ydnote">有道云笔记</span><input type="hidden" value="ydnote,有道云笔记,ydybj"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;tianya&#39;);return false;" class="jiatitle"><span class="jtico jtico_tianya">天涯社区</span><input type="hidden" value="tianya,天涯社区,tysq"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;tieba&#39;);return false;" class="jiatitle"><span class="jtico jtico_tieba">百度贴吧</span><input type="hidden" value="tieba,百度贴吧,bdtb"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;qingbiji&#39;);return false;" class="jiatitle"><span class="jtico jtico_qingbiji">轻笔记</span><input type="hidden" value="qingbiji,轻笔记,qbj"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;tifeng&#39;);return false;" class="jiatitle"><span class="jtico jtico_tifeng">凤凰微博</span><input type="hidden" value="tifeng,凤凰微博,fhwb"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;fanfou&#39;);return false;" class="jiatitle"><span class="jtico jtico_fanfou">饭否</span><input type="hidden" value="fanfou,饭否,ff"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;mingdao&#39;);return false;" class="jiatitle"><span class="jtico jtico_mingdao">明道</span><input type="hidden" value="mingdao,明道,md"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;douban9dian&#39;);return false;" class="jiatitle"><span class="jtico jtico_douban9dian">豆瓣9点</span><input type="hidden" value="douban9dian,豆瓣9点,db9d"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;google&#39;);return false;" class="jiatitle"><span class="jtico jtico_google">谷歌</span><input type="hidden" value="google,谷歌,gg"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;buzz&#39;);return false;" class="jiatitle"><span class="jtico jtico_buzz">谷歌Buzz</span><input type="hidden" value="buzz,谷歌Buzz,ggbuzz"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;youdao&#39;);return false;" class="jiatitle"><span class="jtico jtico_youdao">有道书签</span><input type="hidden" value="youdao,有道书签,ydsq"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;qq&#39;);return false;" class="jiatitle"><span class="jtico jtico_qq">QQ书签</span><input type="hidden" value="qq,QQ书签,qqsq"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;msn&#39;);return false;" class="jiatitle"><span class="jtico jtico_msn">MSN</span><input type="hidden" value="msn,MSN,msn"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;pinterest&#39;);return false;" class="jiatitle"><span class="jtico jtico_pinterest">Pinterest</span><input type="hidden" value="pinterest,Pinterest,pinterest"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;duitang&#39;);return false;" class="jiatitle"><span class="jtico jtico_duitang">堆糖</span><input type="hidden" value="duitang,堆糖,dt"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;tyaolan&#39;);return false;" class="jiatitle"><span class="jtico jtico_tyaolan">摇篮微博</span><input type="hidden" value="tyaolan,摇篮微博,ylwb"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;hi&#39;);return false;" class="jiatitle"><span class="jtico jtico_hi">百度空间</span><input type="hidden" value="hi,百度空间,bdkj"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;hotmail&#39;);return false;" class="jiatitle"><span class="jtico jtico_hotmail">Hotmail邮箱</span><input type="hidden" value="hotmail,Hotmail邮箱,hotmailyx"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;xqw&#39;);return false;" class="jiatitle"><span class="jtico jtico_xqw">雪球</span><input type="hidden" value="xqw,雪球,xqw"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;hexun&#39;);return false;" class="jiatitle"><span class="jtico jtico_hexun">和讯</span><input type="hidden" value="hexun,和讯,hx"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;139mail&#39;);return false;" class="jiatitle"><span class="jtico jtico_139mail">139邮箱</span><input type="hidden" value="139mail,139邮箱,139yx"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;189mail&#39;);return false;" class="jiatitle"><span class="jtico jtico_189mail">189邮箱</span><input type="hidden" value="189mail,189邮箱,189yx"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;189cn&#39;);return false;" class="jiatitle"><span class="jtico jtico_189cn">翼友圈</span><input type="hidden" value="189cn,翼友圈,yyq"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;tpeople&#39;);return false;" class="jiatitle"><span class="jtico jtico_tpeople">人民微博</span><input type="hidden" value="tpeople,人民微博,rmwb"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;txinhua&#39;);return false;" class="jiatitle"><span class="jtico jtico_txinhua">新华微博</span><input type="hidden" value="txinhua,新华微博,xhwb"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;translate&#39;);return false;" class="jiatitle"><span class="jtico jtico_translate">谷歌翻译</span><input type="hidden" value="translate,谷歌翻译,ggfy"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;tuita&#39;);return false;" class="jiatitle"><span class="jtico jtico_tuita">推他</span><input type="hidden" value="tuita,推他,tt"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;mop&#39;);return false;" class="jiatitle"><span class="jtico jtico_mop">猫扑推客</span><input type="hidden" value="mop,猫扑推客,mptk"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;meilishuo&#39;);return false;" class="jiatitle"><span class="jtico jtico_meilishuo">美丽说</span><input type="hidden" value="meilishuo,美丽说,mls"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;mogujie&#39;);return false;" class="jiatitle"><span class="jtico jtico_mogujie">蘑菇街</span><input type="hidden" value="mogujie,蘑菇街,mgj"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;ganniu&#39;);return false;" class="jiatitle"><span class="jtico jtico_ganniu">赶牛网</span><input type="hidden" value="ganniu,赶牛网,gnw"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;poco&#39;);return false;" class="jiatitle"><span class="jtico jtico_poco">Poco网</span><input type="hidden" value="poco,Poco网,pocow"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;leihou&#39;);return false;" class="jiatitle"><span class="jtico jtico_leihou">雷猴网</span><input type="hidden" value="leihou,雷猴网,lhw"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;thexun&#39;);return false;" class="jiatitle"><span class="jtico jtico_thexun">和讯微博</span><input type="hidden" value="thexun,和讯微博,hxwb"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;dream163&#39;);return false;" class="jiatitle"><span class="jtico jtico_dream163">游戏江湖</span><input type="hidden" value="dream163,游戏江湖,yxjh"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;jcrb&#39;);return false;" class="jiatitle"><span class="jtico jtico_jcrb">法律微博</span><input type="hidden" value="jcrb,法律微博,flwb"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;tumblr&#39;);return false;" class="jiatitle"><span class="jtico jtico_tumblr">Tumblr</span><input type="hidden" value="tumblr,Tumblr,tumblr"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;reddit&#39;);return false;" class="jiatitle"><span class="jtico jtico_reddit">Reddit</span><input type="hidden" value="reddit,Reddit,reddit"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;instapaper&#39;);return false;" class="jiatitle"><span class="jtico jtico_instapaper">Instapaper</span><input type="hidden" value="instapaper,Instapaper,instapaper"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;pocket&#39;);return false;" class="jiatitle"><span class="jtico jtico_pocket">Pocket</span><input type="hidden" value="pocket,Pocket,pocket"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;caimi&#39;);return false;" class="jiatitle"><span class="jtico jtico_caimi">财迷</span><input type="hidden" value="caimi,财迷,cm"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;iwo&#39;);return false;" class="jiatitle"><span class="jtico jtico_iwo">WO+分享</span><input type="hidden" value="iwo,WO+分享,iwo"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;waakee&#39;);return false;" class="jiatitle"><span class="jtico jtico_waakee">挖客网</span><input type="hidden" value="waakee,挖客网,wkw"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;cyzone&#39;);return false;" class="jiatitle"><span class="jtico jtico_cyzone">创业邦</span><input type="hidden" value="cyzone,创业邦,cyb"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;99earth&#39;);return false;" class="jiatitle"><span class="jtico jtico_99earth">救救地球</span><input type="hidden" value="99earth,救救地球,jjdq"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;chouti&#39;);return false;" class="jiatitle"><span class="jtico jtico_chouti">抽屉网</span><input type="hidden" value="chouti,抽屉网,ctw"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;dig24&#39;);return false;" class="jiatitle"><span class="jtico jtico_dig24">递客网</span><input type="hidden" value="dig24,递客网,dkw"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;yijee&#39;);return false;" class="jiatitle"><span class="jtico jtico_yijee">易集网</span><input type="hidden" value="yijee,易集网,yjw"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;pdfonline&#39;);return false;" class="jiatitle"><span class="jtico jtico_pdfonline">Pdf在线转换</span><input type="hidden" value="pdfonline,Pdf在线转换,pdfzxzh"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;printfriendly&#39;);return false;" class="jiatitle"><span class="jtico jtico_printfriendly">友好打印</span><input type="hidden" value="printfriendly,友好打印,yhdy"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;w3c&#39;);return false;" class="jiatitle"><span class="jtico jtico_w3c">W3c验证</span><input type="hidden" value="w3c,W3c验证,w3cyz"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;bitly&#39;);return false;" class="jiatitle"><span class="jtico jtico_bitly">Bit.ly</span><input type="hidden" value="bitly,Bit.ly,bitly"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;digg&#39;);return false;" class="jiatitle"><span class="jtico jtico_digg">Digg</span><input type="hidden" value="digg,Digg,digg"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;mailru&#39;);return false;" class="jiatitle"><span class="jtico jtico_mailru">Mail.ru</span><input type="hidden" value="mailru,Mail.ru,mail.ru"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;diigo&#39;);return false;" class="jiatitle"><span class="jtico jtico_diigo">Diigo</span><input type="hidden" value="diigo,Diigo,diigo"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;friendfeed&#39;);return false;" class="jiatitle"><span class="jtico jtico_friendfeed">FriendFeed</span><input type="hidden" value="friendfeed,FriendFeed,friendfeed"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;myspace&#39;);return false;" class="jiatitle"><span class="jtico jtico_myspace">Myspace</span><input type="hidden" value="myspace,Myspace,myspace"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;mixx&#39;);return false;" class="jiatitle"><span class="jtico jtico_mixx">Mixx</span><input type="hidden" value="mixx,Mixx,mixx"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;netlog&#39;);return false;" class="jiatitle"><span class="jtico jtico_netlog">NetLog</span><input type="hidden" value="netlog,NetLog,netlog"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;netvibes&#39;);return false;" class="jiatitle"><span class="jtico jtico_netvibes">Netvibes</span><input type="hidden" value="netvibes,Netvibes,netvibes"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;phonefavs&#39;);return false;" class="jiatitle"><span class="jtico jtico_phonefavs">Phonefavs</span><input type="hidden" value="phonefavs,Phonefavs,phonefavs"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;pingfm&#39;);return false;" class="jiatitle"><span class="jtico jtico_pingfm">Ping.fm</span><input type="hidden" value="pingfm,Ping.fm,ping.fm"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;plaxo&#39;);return false;" class="jiatitle"><span class="jtico jtico_plaxo">Plaxo</span><input type="hidden" value="plaxo,Plaxo,plaxo"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;delicious&#39;);return false;" class="jiatitle"><span class="jtico jtico_delicious">Delicious</span><input type="hidden" value="delicious,Delicious,delicious"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;wong&#39;);return false;" class="jiatitle"><span class="jtico jtico_wong">Mister Wong</span><input type="hidden" value="wong,Mister Wong,misterwong"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;stumbleupon&#39;);return false;" class="jiatitle"><span class="jtico jtico_stumbleupon">Stumbleupon</span><input type="hidden" value="stumbleupon,Stumbleupon,stumbleupon"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;plurk&#39;);return false;" class="jiatitle"><span class="jtico jtico_plurk">Plurk</span><input type="hidden" value="plurk,Plurk,plurk"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;funp&#39;);return false;" class="jiatitle"><span class="jtico jtico_funp">Funp</span><input type="hidden" value="funp,Funp,funp"></a><a href="javascript:;" onclick="jiathis_sendto(&#39;myshare&#39;);return false;" class="jiatitle"><span class="jtico jtico_myshare">Myshare</span><input type="hidden" value="myshare,Myshare,myshare"></a><div style="clear:both"></div></div><div class="centerBottom"><div style="float:left;font-size:10px;"><a href="http://www.jiathis.com/help/html/what-is-jiathis" class="link_01" style="color:#333333;display:none;" target="_blank">这是什么工具?</a></div><div style="float:right;font-size:11px;margin:0 10px 0 0;"><img src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/img_012.gif" align="absmiddle" border="none">&nbsp;<a href="http://www.jiathis.com/index2" style="color:#333333;" class="link_01" target="_blank">JiaThis</a></div><div style="clear:both"></div></div></div></div></div><iframe frameborder="0" src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/jiathis_utility.html" style="display: none;"></iframe>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/zxin/"><img id="blogLogo" src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/zxin/"></a><a class="headermaintitle" href="http://www.cnblogs.com/zxin/"><img style="margin:0px auto 10px auto" src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/r_logo.png" alt="zxin"></a></h1>
+<h2></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/zxin/">首页</a></li>
+<li><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/zxin">联系</a></li>
+<li><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/zxin/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/zxin/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			
+<span id="stats_post_count">随笔 - 10&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 100</span>
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园.html">最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p class="zxin_copyright">本文出处：<a href="http://www.cnblogs.com/zxin/">http://www.cnblogs.com/zxin/</a>&nbsp;（作者：<a href="http://www.cnblogs.com/zxin/">zxin</a>）</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; 很多不太懂正则的朋友，在遇到需要用正则校验数据时，往往是在网上去找很久，结果找来的还是不很符合要求。所以我最近把开发中常用的一些正则表达式整理了一下，在这里分享一下。给自己留个底，也给朋友们做个参考。</p>
+<p><strong><span style="font-size: 14pt;">一、校验数字的表达式</span></strong></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;"> 1</span> 数字：<span style="color: #ff0000;">^[0-9]*$
+</span><span style="color: #008080;"> 2</span> n位的数字：<span style="color: #ff0000;">^\d{n}$
+</span><span style="color: #008080;"> 3</span> 至少n位的数字：<span style="color: #ff0000;">^\d{n,}$
+</span><span style="color: #008080;"> 4</span> m-n位的数字：<span style="color: #ff0000;">^\d{m,n}$
+</span><span style="color: #008080;"> 5</span> 零和非零开头的数字：<span style="color: #ff0000;">^(0|[1-9][0-9]*)$
+</span><span style="color: #008080;"> 6</span> 非零开头的最多带两位小数的数字：<span style="color: #ff0000;">^([1-9][0-9]*)+(.[0-9]{1,2})?$
+</span><span style="color: #008080;"> 7</span> 带1-2位小数的正数或负数：<span style="color: #ff0000;">^(\-)?\d+(\.\d{1,2})?$
+</span><span style="color: #008080;"> 8</span> 正数、负数、和小数：<span style="color: #ff0000;">^(\-|\+)?\d+(\.\d+)?$
+</span><span style="color: #008080;"> 9</span> 有两位小数的正实数：<span style="color: #ff0000;">^[0-9]+(.[0-9]{2})?$
+</span><span style="color: #008080;">10</span> 有1~3位小数的正实数：<span style="color: #ff0000;">^[0-9]+(.[0-9]{1,3})?$
+</span><span style="color: #008080;">11</span> 非零的正整数：<span style="color: #ff0000;">^[1-9]\d*$</span> 或 <span style="color: #ff0000;">^([1-9][0-9]*){1,3}$</span> 或 <span style="color: #ff0000;">^\+?[1-9][0-9]*$
+</span><span style="color: #008080;">12</span> 非零的负整数：<span style="color: #ff0000;">^\-[1-9][]0-9"</span><span style="color: #800000;"><span style="color: #ff0000;">*$</span> <span style="color: #000000;">或</span> <span style="color: #ff0000;">^-[1-9]\d*$</span></span>
+<span style="color: #008080;">13</span> 非负整数：<span style="color: #ff0000;">^\d+$</span> 或 <span style="color: #ff0000;">^[1-9]\d*|0$
+</span><span style="color: #008080;">14</span> 非正整数：<span style="color: #ff0000;">^-[1-9]\d*|0$</span> 或 <span style="color: #ff0000;">^((-\d+)|(0+))$
+</span><span style="color: #008080;">15</span> 非负浮点数：<span style="color: #ff0000;">^\d+(\.\d+)?$</span> 或 <span style="color: #ff0000;">^[1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0$
+</span><span style="color: #008080;">16</span> 非正浮点数：<span style="color: #ff0000;">^((-\d+(\.\d+)?)|(0+(\.0+)?))$</span> 或 <span style="color: #ff0000;">^(-([1-9]\d*\.\d*|0\.\d*[1-9]\d*))|0?\.0+|0$
+</span><span style="color: #008080;">17</span> 正浮点数：<span style="color: #ff0000;">^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$</span> 或 <span style="color: #ff0000;">^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$
+</span><span style="color: #008080;">18</span> 负浮点数：<span style="color: #ff0000;">^-([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$</span> 或 <span style="color: #ff0000;">^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$
+</span><span style="color: #008080;">19</span> 浮点数：<span style="color: #ff0000;">^(-?\d+)(\.\d+)?$</span> 或 <span style="color: #ff0000;">^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p class="zxin_copyright">本文出处：<a href="http://www.cnblogs.com/zxin/">http://www.cnblogs.com/zxin/</a>&nbsp;（作者：<a href="http://www.cnblogs.com/zxin/">zxin</a>）</p>
+<p><strong><span style="font-size: 14pt;">二、校验字符的表达式</span></strong></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;"> 1</span> 汉字：<span style="color: #ff0000;">^[\u4e00-\u9fa5]{0,}$
+</span><span style="color: #008080;"> 2</span> 英文和数字：<span style="color: #ff0000;">^[A-Za-z0-9]+$</span> 或 <span style="color: #ff0000;">^[A-Za-z0-9]{4,40}$
+</span><span style="color: #008080;"> 3</span> 长度为3-20的所有字符：<span style="color: #ff0000;">^.{3,20}$
+</span><span style="color: #008080;"> 4</span> 由26个英文字母组成的字符串：<span style="color: #ff0000;">^[A-Za-z]+$
+</span><span style="color: #008080;"> 5</span> 由26个大写英文字母组成的字符串：<span style="color: #ff0000;">^[A-Z]+$
+</span><span style="color: #008080;"> 6</span> 由26个小写英文字母组成的字符串：<span style="color: #ff0000;">^[a-z]+$
+</span><span style="color: #008080;"> 7</span> 由数字和26个英文字母组成的字符串：<span style="color: #ff0000;">^[A-Za-z0-9]+$
+</span><span style="color: #008080;"> 8</span> 由数字、26个英文字母或者下划线组成的字符串：<span style="color: #ff0000;">^\w+$ 或 ^\w{3,20}$
+</span><span style="color: #008080;"> 9</span> 中文、英文、数字包括下划线：<span style="color: #ff0000;">^[\u4E00-\u9FA5A-Za-z0-9_]+$
+</span><span style="color: #008080;">10</span> 中文、英文、数字但不包括下划线等符号：<span style="color: #ff0000;">^[\u4E00-\u9FA5A-Za-z0-9]+$</span> 或 <span style="color: #ff0000;">^[\u4E00-\u9FA5A-Za-z0-9]{2,20}$
+</span><span style="color: #008080;">11</span> 可以输入含有<span style="color: #000000;">^%&amp;'</span><span style="color: #800000;"><span style="color: #000000;">,;=?$\"等字符：</span><span style="color: #ff0000;">[^%&amp;</span></span><span style="color: #ff0000;">',;=?$\x22]+
+</span><span style="color: #008080;">12</span> 禁止输入含有~的字符：<span style="color: #ff0000;">[^~\x22]+</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p class="zxin_copyright">本文出处：<a href="http://www.cnblogs.com/zxin/">http://www.cnblogs.com/zxin/</a>&nbsp;（作者：<a href="http://www.cnblogs.com/zxin/">zxin</a>）</p>
+<p><strong><span style="font-size: 14pt;">三、特殊需求表达式</span></strong></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080;"> 1</span> Email地址：<span style="color: #ff0000;">^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$
+</span><span style="color: #008080;"> 2</span> 域名：<span style="color: #ff0000;">[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?
+</span><span style="color: #008080;"> 3</span> InternetURL：<span style="color: #ff0000;">[a-zA-z]+://</span><span style="color: #008000;"><span style="color: #ff0000;">[^\s]*</span> <span style="color: #000000;">或</span> <span style="color: #ff0000;">^http:</span></span><span style="color: #ff0000;">//([\w-]+\.)+[\w-]+(/[\w-./?%&amp;=]*)?$
+</span><span style="color: #008080;"> 4</span> 手机号码：<span style="color: #ff0000;">^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$
+</span><span style="color: #008080;"> 5</span> 电话号码(<span style="color: #800000;">"</span><span style="color: #800000;">XXX-XXXXXXX</span><span style="color: #800000;">"</span>、<span style="color: #800000;">"</span><span style="color: #800000;">XXXX-XXXXXXXX</span><span style="color: #800000;">"</span>、<span style="color: #800000;">"</span><span style="color: #800000;">XXX-XXXXXXX</span><span style="color: #800000;">"</span>、<span style="color: #800000;">"</span><span style="color: #800000;">XXX-XXXXXXXX</span><span style="color: #800000;">"</span>、<span style="color: #800000;">"</span><span style="color: #800000;">XXXXXXX</span><span style="color: #800000;">"</span>和<span style="color: #800000;">"</span><span style="color: #800000;">XXXXXXXX)：<span style="color: #ff0000;">^(\(\d{3,4}-)|\d{3.4}-)?\d{7,8}$ </span></span>
+<span style="color: #008080;"> 6</span> 国内电话号码(<span style="color: #800080;">0511</span>-<span style="color: #800080;">4405222</span>、<span style="color: #800080;">021</span>-<span style="color: #800080;">87888822</span>)：<span style="color: #ff0000;">\d{3}-\d{8}|\d{4}-\d{7}
+</span><span style="color: #008080;"> 7</span> 身份证号(15位、18位数字)：<span style="color: #ff0000;">^\d{15}|\d{18}$
+</span><span style="color: #008080;"> 8</span> 短身份证号码(数字、字母x结尾)：<span style="color: #ff0000;">^([0-9]){7,18}(x|X)?$</span> 或 <span style="color: #ff0000;">^\d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$
+</span><span style="color: #008080;"> 9</span> 帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：<span style="color: #ff0000;">^[a-zA-Z][a-zA-Z0-9_]{4,15}$
+</span><span style="color: #008080;">10</span> 密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：<span style="color: #ff0000;">^[a-zA-Z]\w{5,17}$
+</span><span style="color: #008080;">11</span> 强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)：<span style="color: #ff0000;">^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$  
+</span><span style="color: #008080;">12</span> 日期格式：<span style="color: #ff0000;">^\d{4}-\d{1,2}-\d{1,2}
+</span><span style="color: #008080;">13</span> 一年的12个月(<span style="color: #800080;">01</span>～09和1～<span style="color: #800080;">12</span>)：<span style="color: #ff0000;">^(0?[1-9]|1[0-2])$
+</span><span style="color: #008080;">14</span> 一个月的31天(<span style="color: #800080;">01</span>～09和1～<span style="color: #800080;">31</span>)：<span style="color: #ff0000;">^((0?[1-9])|((1|2)[0-9])|30|31)$ 
+</span><span style="color: #008080;">15</span> <span style="color: #000000;">钱的输入格式：
+</span><span style="color: #008080;">16</span>    1.有四种钱的表示形式我们可以接受:<span style="color: #800000;">"</span><span style="color: #800000;">10000.00</span><span style="color: #800000;">"</span> 和 <span style="color: #800000;">"</span><span style="color: #800000;">10,000.00</span><span style="color: #800000;">"</span>, 和没有 <span style="color: #800000;">"</span><span style="color: #800000;">分</span><span style="color: #800000;">"</span> 的 <span style="color: #800000;">"</span><span style="color: #800000;">10000</span><span style="color: #800000;">"</span> 和 <span style="color: #800000;">"</span><span style="color: #800000;">10,000</span><span style="color: #800000;">"</span>：<span style="color: #ff0000;">^[1-9][0-9]*$ 
+</span><span style="color: #008080;">17</span>    2.这表示任意一个不以0开头的数字,但是,这也意味着一个字符<span style="color: #800000;">"</span><span style="color: #800000;">0</span><span style="color: #800000;">"</span>不通过,所以我们采用下面的形式：<span style="color: #ff0000;">^(0|[1-9][0-9]*)$ 
+</span><span style="color: #008080;">18</span>    3.一个0或者一个不以0开头的数字.我们还可以允许开头有一个负号：<span style="color: #ff0000;">^(0|-?[1-9][0-9]*)$ 
+</span><span style="color: #008080;">19</span>    4.这表示一个0或者一个可能为负的开头不为0的数字.让用户以0开头好了.把负号的也去掉,因为钱总不能是负的吧.下面我们要加的是说明可能的小数部分：<span style="color: #ff0000;">^[0-9]+(.[0-9]+)?$ 
+</span><span style="color: #008080;">20</span>    5.必须说明的是,小数点后面至少应该有1位数,所以<span style="color: #800000;">"</span><span style="color: #800000;">10.</span><span style="color: #800000;">"</span>是不通过的,但是 <span style="color: #800000;">"</span><span style="color: #800000;">10</span><span style="color: #800000;">"</span> 和 <span style="color: #800000;">"</span><span style="color: #800000;">10.2</span><span style="color: #800000;">"</span> 是通过的：<span style="color: #ff0000;">^[0-9]+(.[0-9]{2})?$ 
+</span><span style="color: #008080;">21</span>    6.这样我们规定小数点后面必须有两位,如果你认为太苛刻了,可以这样：<span style="color: #ff0000;">^[0-9]+(.[0-9]{1,2})?$ 
+</span><span style="color: #008080;">22</span>    7.这样就允许用户只写一位小数.下面我们该考虑数字中的逗号了,我们可以这样：<span style="color: #ff0000;">^[0-9]{1,3}(,[0-9]{3})*(.[0-9]{1,2})?$ 
+</span><span style="color: #008080;">23</span>    8.1到3个数字,后面跟着任意个 逗号+3个数字,逗号成为可选,而不是必须：<span style="color: #ff0000;">^([0-9]+|[0-9]{1,3}(,[0-9]{3})*)(.[0-9]{1,2})?$ 
+</span><span style="color: #008080;">24</span>    备注：这就是最终结果了,别忘了<span style="color: #800000;">"</span><span style="color: #800000;">+</span><span style="color: #800000;">"</span>可以用<span style="color: #800000;">"</span><span style="color: #800000;">*</span><span style="color: #800000;">"</span>替代如果你觉得空字符串也可以接受的话(奇怪,为什么?<span style="color: #000000;">)最后,别忘了在用函数时去掉去掉那个反斜杠,一般的错误都在这里
+</span><span style="color: #008080;">25</span> xml文件：<span style="color: #ff0000;">^([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[x|X][m|M][l|L]$
+</span><span style="color: #008080;">26</span> 中文字符的正则表达式：<span style="color: #ff0000;">[\u4e00-\u9fa5]
+</span><span style="color: #008080;">27</span> 双字节字符：<span style="color: #ff0000;">[^\x00-\xff]    <span style="color: #808080;">(包括汉字在内，可以用来计算字符串的长度(一个双字节字符长度计2，ASCII字符计1))</span><br></span><span style="color: #008080;">28</span> 空白行的正则表达式：<span style="color: #ff0000;">\n\s*\r    <span style="color: #808080;">(可以用来删除空白行)
+</span></span><span style="color: #008080;">29</span> HTML标记的正则表达式：<span style="color: #ff0000;">&lt;(\S*?)[^&gt;]*&gt;.*?&lt;/\1&gt;|&lt;.*? /&gt;    <span style="color: #808080;">(网上流传的版本太糟糕，上面这个也仅仅能部分，对于复杂的嵌套标记依旧无能为力)</span><br></span><span style="color: #008080;">30 </span>首尾空白字符的正则表达式：<span style="color: #ff0000;">^\s*|\s*$或(^\s*)|(\s*$)    <span style="color: #808080;">(可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式)
+</span></span><span style="color: #008080;">31</span> 腾讯QQ号：<span style="color: #ff0000;">[1-9][0-9]{4,}    <span style="color: #808080;">(<span style="background-color: #f5f5f5; font-family: Courier New;">腾讯QQ号从10000开始</span>)
+</span></span><span style="color: #008080;">32</span> 中国邮政编码：<span style="color: #ff0000;">[1-9]\d{5}(?!\d)    <span style="color: #808080;">(中国邮政编码为6位数字)
+</span></span><span style="color: #008080;">33</span> IP地址：<span style="color: #ff0000;">\d+\.\d+\.\d+\.\d+    <span style="color: #808080;">(提取IP地址时有用)<br><span style="color: #008080;">34</span> <span style="color: #000000;">IP地址：<span style="color: #ff0000;">((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))</span></span><span style="color: #ff0000;">&nbsp;&nbsp;&nbsp; <span style="color: #808080;">(由@<span style="background-color: #f5f5f5; font-family: Courier New;">飞龙三少 提供,感谢共享</span>)</span></span></span></span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p class="zxin_copyright">本文出处：<a href="http://www.cnblogs.com/zxin/">http://www.cnblogs.com/zxin/</a>&nbsp;（作者：<a href="http://www.cnblogs.com/zxin/">zxin</a>）</p></div><div id="MySignature" style="display: block;">作者：<a href="http://www.cnblogs.com/zxin/" target="_blank">zxin</a><br>出处：<a href="http://www.cnblogs.com/zxin/" target="_blank">http://zxin.cnblogs.com/</a><br>本文版权归作者和博客园共有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。</div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/zxin/category/435749.html">编程技巧</a></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/zxin/tag/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(2877765,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;c0ebe3ca-6d3f-e211-aa8f-842b2b196315&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/zxin/" target="_blank"><img src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/u476760.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/zxin/">zxin</a><br>
+            <a href="http://home.cnblogs.com/u/zxin/followees">关注 - 0</a><br>
+            <a href="http://home.cnblogs.com/u/zxin/followers">粉丝 - 21</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;c0ebe3ca-6d3f-e211-aa8f-842b2b196315&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(2877765,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">31</span>
+    </div>
+    <div class="buryit" onclick="votePost(2877765,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">2</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/zxin/archive/2013/01/03/2842437.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/zxin/archive/2013/01/03/2842437.html" title="发布于2013-01-03 20:15">ASP.NET C#各种数据库连接字符串大全——SQLServer、Oracle、Access</a><br><a href="http://www.cnblogs.com/zxin/archive/2013/01/29/2882209.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/zxin/archive/2013/01/29/2882209.html" title="发布于2013-01-29 23:49">当你辛辛苦苦写的博客文章被无情复制，成为了他的"原创"，你作何感想？</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2013-01-26 16:39</span> <a href="http://www.cnblogs.com/zxin/">zxin</a> 阅读(<span id="post_view_count">21629</span>) 评论(<span id="post_comment_count">17</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=2877765" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#" onclick="AddToWz(2877765);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=136006,cb_entryId=2877765,cb_blogApp=currentBlogApp,cb_blogUserGuid='c0ebe3ca-6d3f-e211-aa8f-842b2b196315',cb_entryCreatedDate='2013/1/26 16:39:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<br>
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#2608504" class="layer">#1楼</a><a name="2608504" id="comment_anchor_2608504"></a>  <span class="comment_date">2013-01-27 00:13</span> <a id="a_comment_author_2608504" href="http://www.cnblogs.com/wuhuacong/" target="_blank">伍华聪</a> <a href="http://msg.cnblogs.com/send/%E4%BC%8D%E5%8D%8E%E8%81%AA" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2608504" class="blog_comment_body">不错，推荐一下，整理的很好，至少格式很漂亮，呵呵。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2608504,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2608504,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2608504_avatar" style="display:none;">http://pic.cnblogs.com/face/u8867.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#2608515" class="layer">#2楼</a><a name="2608515" id="comment_anchor_2608515"></a>  <span class="comment_date">2013-01-27 02:36</span> <a id="a_comment_author_2608515" href="http://www.cnblogs.com/humin/" target="_blank">幻天芒</a> <a href="http://msg.cnblogs.com/send/%E5%B9%BB%E5%A4%A9%E8%8A%92" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2608515" class="blog_comment_body">好文，顶顶……</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2608515,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2608515,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2608515_avatar" style="display:none;">http://pic.cnblogs.com/face/343299/20150320135757.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#2608579" class="layer">#3楼</a><a name="2608579" id="comment_anchor_2608579"></a>  <span class="comment_date">2013-01-27 11:50</span> <a id="a_comment_author_2608579" href="http://www.cnblogs.com/garin-yea/" target="_blank">_丑牛</a> <a href="http://msg.cnblogs.com/send/_%E4%B8%91%E7%89%9B" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2608579" class="blog_comment_body">mark\</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2608579,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2608579,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2608579_avatar" style="display:none;">http://pic.cnblogs.com/face/69823/20160328090328.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#2608662" class="layer">#4楼</a><a name="2608662" id="comment_anchor_2608662"></a>  <span class="comment_date">2013-01-27 16:38</span> <a id="a_comment_author_2608662" href="http://www.cnblogs.com/tszero/" target="_blank">零点</a> <a href="http://msg.cnblogs.com/send/%E9%9B%B6%E7%82%B9" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2608662" class="blog_comment_body">推荐下,收集的很全面了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2608662,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2608662,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2608662_avatar" style="display:none;">http://pic.cnblogs.com/face/u50429.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#2608899" class="layer">#5楼</a><a name="2608899" id="comment_anchor_2608899"></a>  <span class="comment_date">2013-01-28 09:35</span> <a id="a_comment_author_2608899" href="http://www.cnblogs.com/therock/" target="_blank">therockthe</a> <a href="http://msg.cnblogs.com/send/therockthe" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2608899" class="blog_comment_body">靠，IP地址是这样\d+\.\d+\.\d+\.\d+ ？太粗了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2608899,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2608899,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#2608905" class="layer">#6楼</a><a name="2608905" id="comment_anchor_2608905"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2013-01-28 09:39</span> <a id="a_comment_author_2608905" href="http://www.cnblogs.com/zxin/" target="_blank">zxin</a> <a href="http://msg.cnblogs.com/send/zxin" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2608905" class="blog_comment_body"><a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#2608899" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2608899);">@</a>
+therockthe<br>你如果有什么其他的更好的，能不能在这里共享一下啊？我们都会感谢你的o(∩_∩)o</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2608905,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2608905,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2608905_avatar" style="display:none;">http://pic.cnblogs.com/face/u476760.png?id=08172907</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#2608938" class="layer">#7楼</a><a name="2608938" id="comment_anchor_2608938"></a>  <span class="comment_date">2013-01-28 10:01</span> <a id="a_comment_author_2608938" href="http://www.cnblogs.com/swq6413/" target="_blank">七少爷</a> <a href="http://msg.cnblogs.com/send/%E4%B8%83%E5%B0%91%E7%88%B7" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2608938" class="blog_comment_body">IP地址：<br>((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2608938,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2608938,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2608938_avatar" style="display:none;">http://pic.cnblogs.com/face/142964/20131116170946.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#2608942" class="layer">#8楼</a><a name="2608942" id="comment_anchor_2608942"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2013-01-28 10:03</span> <a id="a_comment_author_2608942" href="http://www.cnblogs.com/zxin/" target="_blank">zxin</a> <a href="http://msg.cnblogs.com/send/zxin" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2608942" class="blog_comment_body"><a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#2608938" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2608938);">@</a>
+飞龙三少<br>谢谢！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2608942,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2608942,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2608942_avatar" style="display:none;">http://pic.cnblogs.com/face/u476760.png?id=08172907</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#2609423" class="layer">#9楼</a><a name="2609423" id="comment_anchor_2609423"></a>  <span class="comment_date">2013-01-28 17:50</span> <a id="a_comment_author_2609423" href="http://www.cnblogs.com/wuya/" target="_blank">向晚</a> <a href="http://msg.cnblogs.com/send/%E5%90%91%E6%99%9A" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2609423" class="blog_comment_body">mark</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2609423,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2609423,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2609423_avatar" style="display:none;">http://pic.cnblogs.com/face/33454/20150917230609.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#2610382" class="layer">#10楼</a><a name="2610382" id="comment_anchor_2610382"></a>  <span class="comment_date">2013-01-29 22:38</span> <a id="a_comment_author_2610382" href="http://home.cnblogs.com/u/154906/" target="_blank">爱问知识人</a> <a href="http://msg.cnblogs.com/send/%E7%88%B1%E9%97%AE%E7%9F%A5%E8%AF%86%E4%BA%BA" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2610382" class="blog_comment_body">博主辛苦了，总结的挺全的，比较实用。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2610382,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2610382,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#2610662" class="layer">#11楼</a><a name="2610662" id="comment_anchor_2610662"></a>  <span class="comment_date">2013-01-30 11:40</span> <a id="a_comment_author_2610662" href="http://home.cnblogs.com/u/447561/" target="_blank">regel</a> <a href="http://msg.cnblogs.com/send/regel" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2610662" class="blog_comment_body">收藏了,总结的挺全面的.</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2610662,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2610662,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#2936840" class="layer">#12楼</a><a name="2936840" id="comment_anchor_2936840"></a>  <span class="comment_date">2014-05-12 11:10</span> <a id="a_comment_author_2936840" href="http://home.cnblogs.com/u/632862/" target="_blank">BooleanTrueOrFalse</a> <a href="http://msg.cnblogs.com/send/BooleanTrueOrFalse" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2936840" class="blog_comment_body">真的很好。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2936840,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2936840,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#3327971" class="layer">#13楼</a><a name="3327971" id="comment_anchor_3327971"></a>  <span class="comment_date">2015-12-16 09:50</span> <a id="a_comment_author_3327971" href="http://home.cnblogs.com/u/858069/" target="_blank">tab_space</a> <a href="http://msg.cnblogs.com/send/tab_space" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3327971" class="blog_comment_body">写的很好，博主能转载你的文章到我的 csdn博客（tab_space）上吗？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3327971,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3327971,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#3328025" class="layer">#14楼</a><a name="3328025" id="comment_anchor_3328025"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2015-12-16 10:40</span> <a id="a_comment_author_3328025" href="http://www.cnblogs.com/zxin/" target="_blank">zxin</a> <a href="http://msg.cnblogs.com/send/zxin" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3328025" class="blog_comment_body"><a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#3327971" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3327971);">@</a>
+tab_space<br>感谢您的认可，可以转载的！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3328025,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3328025,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3328025_avatar" style="display:none;">http://pic.cnblogs.com/face/u476760.png?id=08172907</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#3335617" class="layer">#15楼</a><a name="3335617" id="comment_anchor_3335617"></a>  <span class="comment_date">2015-12-27 20:37</span> <a id="a_comment_author_3335617" href="http://home.cnblogs.com/u/678234/" target="_blank">dfvesdsd</a> <a href="http://msg.cnblogs.com/send/dfvesdsd" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3335617" class="blog_comment_body">get it</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3335617,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3335617,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#3414578" class="layer">#16楼</a><a name="3414578" id="comment_anchor_3414578"></a>  <span class="comment_date">2016-04-21 20:51</span> <a id="a_comment_author_3414578" href="http://home.cnblogs.com/u/501912/" target="_blank">蚕豆</a> <a href="http://msg.cnblogs.com/send/%E8%9A%95%E8%B1%86" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3414578" class="blog_comment_body">收藏了  谢谢博主.~<br>再也不用费脑子想半天了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3414578,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3414578,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#3441840" class="layer">#17楼</a><a name="3441840" id="comment_anchor_3441840"></a><span id="comment-maxId" style="display:none;">3441840</span><span id="comment-maxDate" style="display:none;">2016/5/30 11:33:38</span>  <span class="comment_date">2016-05-30 11:33</span> <a id="a_comment_author_3441840" href="http://home.cnblogs.com/u/399088/" target="_blank">lovdin</a> <a href="http://msg.cnblogs.com/send/lovdin" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3441840" class="blog_comment_body">赞👍</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3441840,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3441840,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/active/live" target="_blank">【链接】融云阿里云大咖面对面 ：教你玩转直播风口</a><br><a href="http://www.gcpowertools.com.cn/products/activereports_overview.htm?utm_source=cnblogs&utm_medium=blogpage&utm_term=bottom&utm_content=AR&utm_campaign=community" target="_blank">【推荐】报表开发有捷径：快速设计轻松集成，数据可视化和交互</a><br><a href="http://cn.iforex.com/landing_pages/br1/zhns/Testimonials8/?content=Testimonials8&SID=445058" target="_blank">【推荐】一个月仅用630元赚取15000元，学会投资</a><br><a href="http://netease.im/?&hmsr=bky8&from=bky8" target="_blank">【推荐】网易云信-一天开发一个微信，独创1对1技术顾问让开发加速</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="http://gold.xitu.io/welcome/?utm_source=cnblogs&utm_medium=banner&utm_content=gaoshou&utm_campaign=q3_website" target="_blank"><img width="300" height="250" src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/24442-20160805112458981-1554012564.jpg" alt=""></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/551528/" target="_blank">支付宝不折腾能死？</a><br> ·  <a href="http://news.cnblogs.com/n/551527/" target="_blank">斗鱼完成15亿元C轮融资，继续领跑直播平台</a><br> ·  <a href="http://news.cnblogs.com/n/551526/" target="_blank">真是听歌的新境界 为音响设立专属电线杆</a><br> ·  <a href="http://news.cnblogs.com/n/551525/" target="_blank">小米黄江吉：小米人脸检测算法准确率位列FDDB 全球第一</a><br> ·  <a href="http://news.cnblogs.com/n/551524/" target="_blank">想要投资区块链项目，投资人该如何下手？</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jiguang.cn/devservice/?from=cnblogs01" target="_blank"><img width="468" height="60" src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/24442-20160803181056012-1919505484.jpg" alt=""></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/550625/" target="_blank">程序猿媳妇儿注意事项</a><br> ·  <a href="http://kb.cnblogs.com/page/540529/" target="_blank">可是姑娘，你为什么要编程呢？</a><br> ·  <a href="http://kb.cnblogs.com/page/549631/" target="_blank">知其所以然（以算法学习为例）</a><br> ·  <a href="http://kb.cnblogs.com/page/548394/" target="_blank">如何给变量取个简短且无歧义的名字</a><br> ·  <a href="http://kb.cnblogs.com/page/549080/" target="_blank">编程的智慧</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div class="box">
+	<h3 class="boxtitle">访问者分布</h3>
+    <div style="margin: 0px auto; width: 160px; display: block; height: 126px;">
+<a href="http://www4.clustrmaps.com/counter/maps.php?url=http://zxin.cnblogs.com/" id="clustrMapsLink" target="_blank"><img src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/index2.php" style="border:0px;" alt="Locations of visitors to this page" title="Locations of visitors to this page" id="clustrMapsImg">
+</a>
+
+    </div>
+</div>
+<div class="box">
+	<h3 class="boxtitle">版权声明</h3>
+	<ul>
+		<li><a href="http://www.cnblogs.com/zxin/">zxin</a> 所有文章遵循<a href="http://creativecommons.org/licenses/by-nc/3.0/deed.zh" target="_blank">创作共用版权协议</a>，要求<strong>署名、非商业 、保持一致</strong>。在满足<a href="http://creativecommons.org/licenses/by-nc/3.0/deed.zh" target="_blank">创作共用版权协议 </a>的基础上可以转载，但请以超链接形式注明出处。<a href="http://www.51.la/?15194786" target="_blank" title="51.La 网站流量统计系统"><img alt="51.La 网站流量统计系统" src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/icon_0.gif" style="border:none"></a>
+
+<noscript>&lt;a href="http://www.51.la/?15194786" target="_blank"&gt;&lt;img alt="&amp;#x6211;&amp;#x8981;&amp;#x5566;&amp;#x514D;&amp;#x8D39;&amp;#x7EDF;&amp;#x8BA1;" src="http://img.users.51.la/15194786.asp" style="border:none" /&gt;&lt;/a&gt;</noscript>
+</li>
+    </ul>
+</div><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/zxin/">zxin</a><br>园龄：<a href="http://home.cnblogs.com/u/zxin/" title="入园时间：2012-12-06">3年8个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/zxin/followers/">21</a><br>关注：<a href="http://home.cnblogs.com/u/zxin/followees/">0</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;c0ebe3ca-6d3f-e211-aa8f-842b2b196315&#39;)">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/zxin/tag/WinForm/">WinForm</a>(3)</li><li><a href="http://www.cnblogs.com/zxin/tag/SQL%20Server/">SQL Server</a>(2)</li><li><a href="http://www.cnblogs.com/zxin/tag/.NET/">.NET</a>(2)</li><li><a href="http://www.cnblogs.com/zxin/tag/C%23/">C#</a>(2)</li><li><a href="http://www.cnblogs.com/zxin/tag/Connectionstrings/">Connectionstrings</a>(1)</li><li><a href="http://www.cnblogs.com/zxin/tag/OleDb/">OleDb</a>(1)</li><li><a href="http://www.cnblogs.com/zxin/tag/Oracle/">Oracle</a>(1)</li><li><a href="http://www.cnblogs.com/zxin/tag/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>(1)</li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+<h3 class="catListTitle">随笔分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/zxin/category/435749.html">编程技巧(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/zxin/category/435748.html">软件开发(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/zxin/category/435742.html">数据库(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/zxin/category/451734.html">它山之石(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/zxin/category/436381.html">杂谈手记(2)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/zxin/archive/2013/02.html">2013年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/zxin/archive/2013/01.html">2013年1月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/zxin/archive/2012/12.html">2012年12月 (6)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	12873
+	</li>
+	<li class="liRank">
+		排名 -	15901
+	</li>
+</ul>
+</div>
+
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#3441840">1. Re:最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等</a></li>
+        <li class="recent_comment_body">赞👍</li>
+        <li class="recent_comment_author">--lovdin</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#3414578">2. Re:最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等</a></li>
+        <li class="recent_comment_body">收藏了  谢谢博主.~<br>再也不用费脑子想半天了</li>
+        <li class="recent_comment_author">--蚕豆</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html#3335617">3. Re:最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等</a></li>
+        <li class="recent_comment_body">get it</li>
+        <li class="recent_comment_author">--dfvesdsd</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园.html">1. 最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等(21628)</a></li><li><a href="http://www.cnblogs.com/zxin/archive/2013/01/03/2842437.html">2. ASP.NET C#各种数据库连接字符串大全——SQLServer、Oracle、Access(5818)</a></li><li><a href="http://www.cnblogs.com/zxin/archive/2013/01/29/2882209.html">3. 当你辛辛苦苦写的博客文章被无情复制，成为了他的"原创"，你作何感想？(4744)</a></li><li><a href="http://www.cnblogs.com/zxin/archive/2012/12/08/2808514.html">4. c#不可忍受之慢——谁是罪魁祸首(1074)</a></li><li><a href="http://www.cnblogs.com/zxin/archive/2012/12/07/2806406.html">5. WinForm 窗体圆角、平角（不规则窗体）实现的几种方法(919)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园.html">1. 最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等(31)</a></li><li><a href="http://www.cnblogs.com/zxin/archive/2013/01/29/2882209.html">2. 当你辛辛苦苦写的博客文章被无情复制，成为了他的"原创"，你作何感想？(18)</a></li><li><a href="http://www.cnblogs.com/zxin/archive/2013/01/03/2842437.html">3. ASP.NET C#各种数据库连接字符串大全——SQLServer、Oracle、Access(12)</a></li><li><a href="http://www.cnblogs.com/zxin/archive/2012/12/08/2808514.html">4. c#不可忍受之慢——谁是罪魁祸首(6)</a></li><li><a href="http://www.cnblogs.com/zxin/archive/2012/12/06/2806377.html">5. MSSQL 如何查看SQL语句的执行时间（判断SQL语句的效率）(1)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2016 zxin
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+<!--PageEndHtml Block Begin-->
+<!-- JiaThis Button BEGIN -->
+<script type="text/javascript" src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/jiathis_r.js" charset="utf-8"></script><script src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/ckepop.js" charset="utf-8"></script><script src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/ckecenterpop.js" charset="utf-8"></script><script type="text/javascript" src="./最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等 - zxin - 博客园_files/plugin.client.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+<!-- 复制跟版权信息 BEGIN -->
+<script type="text/javascript">
+document.body.oncopy = function () {
+	setTimeout(function () {
+		var text = clipboardData.getData("text");
+		if (text) {
+			text = text + "本文出处：" + window.location.href + "（作者：zxin.cnblogs.com）";
+			clipboardData.setData("text",text);
+		}
+	},100)
+}
+</script>
+<!-- 复制跟版权信息 END -->
+<!--PageEndHtml Block End-->
+
+
+</body></html>

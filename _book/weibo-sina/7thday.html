@@ -18,6 +18,8 @@
     
     
     
+    <link rel="next" href="../weibo-sina/regular_expression.html" />
+    
     
     <link rel="prev" href="../weibo-sina/sixday.html" />
     
@@ -31,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2.6" data-basepath=".." data-revision="1471231759974">
+    <div class="book"  data-level="2.6" data-basepath=".." data-revision="1471441504965">
     
 
 <div class="book-summary">
@@ -453,6 +455,28 @@
                 
             
             
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="2.6.1" data-path="weibo-sina/regular_expression.html">
+            
+                
+                    <a href="../weibo-sina/regular_expression.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.1.</b>
+                        
+                         Regular EXpression
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
 
@@ -549,7 +573,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_1185">
+                    <section class="normal" id="section-gitbook_24">
                     
                         <h1 id="7thday">7thDay</h1>
 <h3 id="textview">textview</h3>
@@ -645,7 +669,40 @@
         <span class="hljs-built_in">print</span>(attrMStr.string)
     }
 </code></pre>
-<h2 id="">#</h2>
+<h3 id="">怎么切换键盘</h3>
+<ul>
+<li>先取消第一响应者</li>
+<li>更换inputview</li>
+<li>成为第一响应者</li>
+</ul>
+<pre><code class="lang-swift">        emoticonKeyboardVc.mjTextView.resignFirstResponder()
+
+        emoticonKeyboardVc.mjTextView.inputView = (emoticonKeyboardVc.mjTextView.inputView != <span class="hljs-built_in">nil</span> ? <span class="hljs-built_in">nil</span> : emoticonKeyboardVc.keyboard)
+
+        emoticonKeyboardVc.mjTextView.becomeFirstResponder()
+</code></pre>
+<h3 id="framebounds">frame和bounds的区别</h3>
+<ul>
+<li>修改frame的时候, 比如修改宽度, 那x不会变</li>
+<li>而用bounds修改宽度的时候, 是从控件的中间开始增大, x会变</li>
+</ul>
+<h3 id="">把图片写入相册</h3>
+<pre><code class="lang-swift">         <span class="hljs-type">UIImageWriteToSavedPhotosAlbum</span>(image, <span class="hljs-keyword">self</span>, <span class="hljs-string">"image:didFinishSavingWithError:contextInfo:"</span>, <span class="hljs-built_in">nil</span>)
+
+    }
+
+    <span class="hljs-preprocessor">@objc</span> private <span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">image</span><span class="hljs-params">(image : UIImage, didFinishSavingWithError error : NSError?, contextInfo : AnyObject)</span> </span>{
+
+        <span class="hljs-keyword">if</span> error != <span class="hljs-built_in">nil</span>
+        {
+            <span class="hljs-type">SVProgressHUD</span>.showErrorWithStatus(<span class="hljs-string">"图片保存失败"</span>)
+        }<span class="hljs-keyword">else</span>
+        {
+            <span class="hljs-type">SVProgressHUD</span>.showSuccessWithStatus(<span class="hljs-string">"图片保存成功"</span>)
+        }
+
+    }
+</code></pre>
 
                     
                     </section>
@@ -656,8 +713,10 @@
         </div>
 
         
-        <a href="../weibo-sina/sixday.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: SixDay"><i class="fa fa-angle-left"></i></a>
+        <a href="../weibo-sina/sixday.html" class="navigation navigation-prev " aria-label="Previous page: SixDay"><i class="fa fa-angle-left"></i></a>
         
+        
+        <a href="../weibo-sina/regular_expression.html" class="navigation navigation-next " aria-label="Next page: Regular EXpression"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

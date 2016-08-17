@@ -112,5 +112,27 @@
         emoticonKeyboardVc.mjTextView.becomeFirstResponder()
 ```
 
+###frame和bounds的区别
 
+- 修改frame的时候, 比如修改宽度, 那x不会变
+- 而用bounds修改宽度的时候, 是从控件的中间开始增大, x会变
 
+### 把图片写入相册
+
+```swift
+         UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
+
+    }
+
+    @objc private func image(image : UIImage, didFinishSavingWithError error : NSError?, contextInfo : AnyObject) {
+
+        if error != nil
+        {
+            SVProgressHUD.showErrorWithStatus("图片保存失败")
+        }else
+        {
+            SVProgressHUD.showSuccessWithStatus("图片保存成功")
+        }
+
+    }
+```
