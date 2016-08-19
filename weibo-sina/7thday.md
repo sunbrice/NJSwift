@@ -136,3 +136,52 @@
 
     }
 ```
+
+###上传图片`mimeType: "application/octet-stream"`的压缩`UIImageJPEGRepresentation(image, 0.5)`
+```swift
+if let image = images.first, imageData = UIImageJPEGRepresentation(image, 0.5)
+            {
+                multipartFormData.appendPartWithFileData(imageData, name: "pic", fileName: "test", mimeType: "application/octet-stream")
+            }
+
+            //  data 图片对应的二进制数据
+            //  name 服务端需要参数
+            //  fileName 图片对应名字,一般服务不会使用,因为服务端会直接根据你上传的图片随机产生一个唯一的图片名字
+            //  mimeType 资源类型
+            //  不确定参数类型 可以这个 octet-stream 类型, 二进制流
+
+```
+
+
+###HYLabel
+```swift
+retweetTextLabel.matchTextColor = LMJStatusMatchTextColor
+
+        // 监听@谁谁谁的点击
+        retweetTextLabel.userTapHandler = { (label, user, range) in
+
+            LMJLog(label)
+            LMJLog(user)
+            LMJLog(range)
+        }
+
+        // 监听链接的点击
+        retweetTextLabel.linkTapHandler = { (label, link, range) in
+            LMJLog(label)
+            LMJLog(user)
+            LMJLog(range)
+            LMJLog((label.text! as NSString).substringWithRange(range))
+        }
+
+        // 监听话题的点击
+        retweetTextLabel.topicTapHandler = { (label, topic, range) in
+            LMJLog(label)
+            LMJLog(user)
+            LMJLog(range)
+        }
+
+
+```
+
+
+
