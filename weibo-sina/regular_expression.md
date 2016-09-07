@@ -24,6 +24,62 @@
     }
 ```
 
+###上课笔记
+```swift
+
+练习1:匹配abc
+
+练习2:包含一个a~z,后面必须是0~9 -->[a-z][0-9]或者[a-z]\d
+    * [a-z] : a~z
+    * [0-9]/\d : 0~9
+
+练习3:必须第一个是字母,第二个是数字 -->^[a-z][0-9]$
+    * ^[a-z] : 表示首字母必须是a~z
+    * \d{2,10} : 数字有2到10
+    * [a-z]$ : 表示必须以a-z的字母结尾
+
+练习4:必须第一个是字母,字母后面跟上4~9个数字
+
+练习5:不能是数字0-9
+
+    * [^0-9] : 不能是0~9
+
+
+
+练习6:QQ匹配:^[1-9]\d{4,11}$
+都是数字
+5~12位
+并且第一位不能是0
+
+
+练习7:手机号码匹配^1[3578]\d{9}$
+1.以13/15/17/18
+2.长度是11
+        let statusText = "@coderwhy:【动物尖叫合辑】#肥猪流#猫头鹰这么尖叫[偷笑]、@M了个J: 老鼠这么尖叫、兔子这么尖叫[吃惊]、@花满楼: 莫名奇#小笼包#妙的笑到最后[好爱哦]！~ http://t.cn/zYBuKZ8/"
+
+        // 1.创建匹配规则
+        // let pattern = "@.*?:" // 匹配出来@coderwhy:
+        // let pattern = "#.*?#" // 匹配话题
+        // let pattern = "\\[.*?\\]" // 匹配表情
+        let pattern = "http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?" // URL网址
+
+        // 2.创建正则表达式对象
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else {
+            return
+        }
+
+        // 3.开始匹配
+        let results = regex.matchesInString(statusText, options: [], range: NSRange(location: 0, length: statusText.characters.count))
+
+        // 4.获取结果
+        for result in results {
+            print((statusText as NSString).substringWithRange(result.range))
+        }
+
+
+
+```
+
 
 ##常用的正则表达式
 
