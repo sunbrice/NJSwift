@@ -1,0 +1,8 @@
+*.css linguist-language=swift
+*.less linguist-language=swift
+*.js linguist-language=swift
+*.html linguist-language=swift
+*.vue linguist-language=swift
+Makefile linguist-language=swift
+*.Makefile linguist-language=swift
+Makefile.* linguist-language=swift
