@@ -1,6 +1,3 @@
-
-##[gitbook 下载地址](https://github.com/NJHu/gitbook-dmg):https://github.com/NJHu/gitbook-dmg
-
 作者:NJHu
 
 GitHub: [https://github.com/NJhu](https://github.com/NJhu)
@@ -9,7 +6,7 @@ GitHub: [https://github.com/NJhu](https://github.com/NJhu)
 
 邮箱: 64hp@163.com
 
-# Summary
+# 目录
 
 * [ReadMe](README.md)
 * [SwiftFoundation](01-swiftfoundation/README.md)
